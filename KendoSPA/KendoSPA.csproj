@@ -69,6 +69,7 @@
     <Content Include="packages.config" />
     <Content Include="src\app\components\malarkey\malarkey.less" />
     <Content Include="src\app\components\navbar\navbar.less" />
+    <None Include="src\app\components\navbar\sidebars.less" />
     <Content Include="src\app\index.less" />
     <Content Include="gulp\.eslintrc" />
     <Content Include="e2e\.eslintrc" />

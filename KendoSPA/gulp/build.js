@@ -51,6 +51,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe(cssFilter)
     .pipe($.sourcemaps.init())
     .pipe($.replace('../../bower_components/bootstrap/fonts/', '../fonts/'))
+    .pipe($.replace('../../bower_components/font-awesome/fonts/', '../fonts/'))
     .pipe($.minifyCss({ processImport: false }))
     .pipe($.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
@@ -69,9 +70,13 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
   });
 
+gulp.task('copy-fa-fonts', function () {
+	return gulp.src(conf.wiredep.directory + '/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}')
+	  .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
+});
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
-gulp.task('fonts', function () {
+gulp.task('fonts', ['copy-fa-fonts'], function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())

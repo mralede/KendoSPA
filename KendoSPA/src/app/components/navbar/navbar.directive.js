@@ -8,14 +8,27 @@
   /** @ngInject */
   function acmeNavbar() {
     var directive = {
-      restrict: 'E',
+      restrict: 'A',
       templateUrl: 'app/components/navbar/navbar.html',
       scope: {
           creationDate: '='
       },
       controller: NavbarController,
       controllerAs: 'vm',
-      bindToController: true
+      bindToController: true,
+
+      transclude: true,
+      link: function (scope, element, attrs) {
+      	$("#menu-toggle-left").click(function (e) {
+      		e.preventDefault();
+      		$("#wrapper").toggleClass("active-left");
+      	});
+
+      	$("#menu-toggle-right").click(function (e) {
+      		e.preventDefault();
+      		$("#wrapper").toggleClass("active-right");
+      	});
+      }
     };
 
     return directive;
@@ -29,4 +42,6 @@
     }
   }
 
+
 })();
+
