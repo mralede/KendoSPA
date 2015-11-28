@@ -69,7 +69,8 @@
 					</li>
 				</ul>
 
-				<a class="navbar-brand right-space" href="#">DIGIMEDIA</a>
+				<a class="navbar-brand left-space" href="#">DIGIMEDIA</a>
+				<p class="navbar-text">professional</p>
 
 				<button id="menu-toggle-right" type="button" class="navbar-toggle visible navbar-btn">
 					<span class="icon-bar"></span>
@@ -87,11 +88,11 @@
 	<div id="sidebar-wrapper-left">
 		<nav id="spy">
 			<ul class="sidebar-nav nav">
-				<li>
-					<a href="#"><span class="fa fa-home solo">Spots</span></a>
+				<li ui-sref-active="active">
+					<a href="#" ui-sref="home"><span class="fa fa-home solo">Spots</span></a>
 				</li>
-				<li>
-					<a href="#" data-scroll>
+				<li ui-sref-active="active">
+					<a href="#" ui-sref="playlists">
 						<span class="fa fa-book solo">Playlists</span>
 					</a>
 				</li>
@@ -107,25 +108,54 @@
 					<a href="#home"><span class="fa fa-home solo">First link</span></a>
 				</li>-->
 				<li>
-					<a href="#anch1" data-scroll>
-						<span class="fa fa-anchor solo">Anchor 1</span>
-					</a>
+					<div class="nav-item">
+						<i class="nav-icon flag-GB solo"></i>
+
+						<label class="radio">
+							<input type="radio" ng-model="vm.language" value="en-GB">
+							English
+						</label>
+					</div>
 				</li>
+
 				<li>
-					<a href="#anch2" data-scroll>
-						<span class="fa fa-anchor solo">Anchor 2</span>
-					</a>
+					<div class="nav-item">
+						<i class="nav-icon flag-DE solo"></i>
+
+						<label class="radio">
+							<input type="radio" ng-model="vm.language" value="de-DE">
+							German
+						</label>
+					</div>
 				</li>
+
 				<li>
-					<a href="#anch3" data-scroll>
-						<span class="fa fa-anchor solo">Anchor 3</span>
-					</a>
+					<div class="nav-item">
+						<i class="nav-icon flag-FR solo"></i>
+
+						<label class="radio">
+							<input type="radio" ng-model="vm.language" value="fr-FR">
+							France
+						</label>
+					</div>
 				</li>
+
 				<li>
+					<div class="nav-item">
+						<i class="nav-icon flag-ES solo"></i>
+
+						<label class="radio">
+							<input type="radio" ng-model="vm.language" value="es-ES">
+							Spanish
+						</label>
+					</div>
+				</li>
+
+				<!--<li>
 					<a href="#anch4" data-scroll>
 						<span class="fa fa-anchor solo">Anchor 4</span>
 					</a>
-				</li>
+				</li>-->
 			</ul>
 		</nav>
 	</div>

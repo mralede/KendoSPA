@@ -67,6 +67,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="src\app\common\common.constants.js" />
+    <Content Include="src\app\common\common.module.js" />
     <Content Include="src\app\components\malarkey\malarkey.less" />
     <Content Include="src\app\components\navbar\navbar.less" />
     <None Include="src\app\components\navbar\sidebars.less" />
@@ -80,6 +82,8 @@
     <Content Include=".yo-rc.json" />
     <Content Include="bower.json" />
     <Content Include="package.json" />
+    <Content Include="src\app\flags.less" />
+    <Content Include="src\app\playlists\playlists.controller.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -119,9 +123,11 @@
     <Content Include="src\app\main\main.controller.js" />
     <Content Include="src\app\main\main.controller.spec.js" />
     <Content Include="src\app\main\main.html" />
+    <Content Include="src\app\playlists\playlists.html" />
     <Content Include="src\assets\images\angular.png" />
     <Content Include="src\assets\images\bootstrap.png" />
     <Content Include="src\assets\images\browsersync.png" />
+    <Content Include="src\assets\images\flags.png" />
     <Content Include="src\assets\images\gulp.png" />
     <Content Include="src\assets\images\jasmine.png" />
     <Content Include="src\assets\images\karma.png" />
