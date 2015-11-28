@@ -1,0 +1,74 @@
+﻿
+.app-panel {
+	border-radius: 0;
+	border: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+
+	&.white {
+		.btn-default {
+		}
+	}
+
+	&.green {
+		background-color: #16a085;
+	}
+
+	&.blue {
+		background-color: #418bca;
+	}
+
+	&.grey {
+		background-color: #3f4e62;
+
+		.btn-default {
+			background-color: #f0f0f0;
+
+			&:hover {
+				background-color: #e4e4e4;
+			}
+
+			color: #5AADBB;
+		}
+
+		.divider-vertical {
+			background-color: #f0f0f0;
+		}
+	}
+
+	&.black {
+		background-color: rgba(15,15,15,.8);
+		color: #f0f0f0;
+
+		.btn-default {
+			/*background-color: #f0f0f0;
+
+			&:hover {
+				background-color: #e4e4e4;
+			}*/
+
+			color: #a0a0a0;
+		}
+
+		.divider-vertical {
+			background-color: #f0f0f0;
+		}
+	}
+
+	.panel-body {
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+
+	.divider-vertical {
+		display: inline-block;
+		vertical-align: middle;
+		height: 50px;
+		margin: 0 9px;
+		border-left: 1px solid #f2f2f2;
+		border-right: 1px solid #ffffff;
+
+		&.small {
+			height: 46px;
+		}
+	}
+}
