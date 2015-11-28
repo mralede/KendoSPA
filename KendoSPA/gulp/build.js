@@ -74,9 +74,20 @@ gulp.task('copy-fa-fonts', function () {
 	return gulp.src(conf.wiredep.directory + '/font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}')
 	  .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
 });
+
+gulp.task('copy-kendo-images', function () {
+	return gulp.src(conf.wiredep.directory + '/kendo-ui/styles/Black/*.*')
+	  .pipe(gulp.dest(path.join(conf.paths.dist, '/styles/Black/')));
+});
+
+gulp.task('copy-kendo-fonts', function () {
+	return gulp.src(conf.wiredep.directory + '/kendo-ui/styles/fonts/**/*.{eot,svg,ttf,woff,woff2}')
+	  .pipe(gulp.dest(path.join(conf.paths.dist, '/styles/fonts/')));
+});
+
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
-gulp.task('fonts', ['copy-fa-fonts'], function () {
+gulp.task('fonts', ['copy-fa-fonts', 'copy-kendo-images', 'copy-kendo-fonts'], function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())

@@ -83,7 +83,10 @@
     <Content Include="bower.json" />
     <Content Include="package.json" />
     <Content Include="src\app\flags.less" />
+    <Content Include="src\app\main\main.spotsFilter.service.js" />
     <Content Include="src\app\playlists\playlists.controller.js" />
+    <Content Include="src\app\panel.less" />
+    <Content Include="src\app\main\main.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

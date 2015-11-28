@@ -6,34 +6,58 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
+  function MainController($timeout, webDevTec, toastr, spotsFilterService) {
     var vm = this;
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1448371774421;
-    vm.showToastr = showToastr;
+    function onDateChange() {
+    	console.log(vm.spotsFilter);
+    };
 
-    activate();
+    vm.monthSelectorOptions = {
+    	start: "year",
+    	depth: "year",
 
-    function activate() {
-      getWebDevTec();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
+    	change: onDateChange
+    };
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
+    vm.hcDataSource = [
+		{ id: 0, name: "All" },
+		{ id: 1, name: "Option 1" },
+		{ id: 2, name: "Option 2" }
+    ];
 
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
+    vm.statusDataSource = [
+		{ id: 0, name: "All" },
+		{ id: 1, name: "Option 1" },
+		{ id: 2, name: "Option 2" }
+    ];
 
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
-      });
-    }
+    vm.categorieDataSource = [
+		{ id: 0, name: "All" },
+		{ id: 1, name: "Option 1" },
+		{ id: 2, name: "Option 2" }
+    ];
+
+    vm.languageDataSource = [
+		{ id: 0, name: "All" },
+		{ id: 1, name: "English" },
+		{ id: 2, name: "German" }
+    ];
+
+    vm.formatDataSource = [
+		{ id: 0, name: "All" },
+		{ id: 1, name: "Option 1" },
+		{ id: 2, name: "Option 2" }
+    ];
+
+    vm.regionDataSource = [
+		{ id: 0, name: "All" },
+		{ id: 1, name: "Option 1" },
+		{ id: 2, name: "Option 2" }
+    ];
+
+    vm.spotsFilter = spotsFilterService;
+
+    console.log(vm.spotsFilter);
   }
 })();

@@ -1,25 +1,233 @@
-<div class="jumbotron text-center">
-	<h1>'Allo, 'Allo!</h1>
-	<p class="lead">
-		<img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-		Always a pleasure scaffolding your apps.
-	</p>
-	<p class="animated infinite" ng-class="main.classAnimation">
-		<button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-	</p>
-	<p>
-		With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-	</p>
-</div>
-<div class="row">
-	<div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-		<div class="thumbnail">
-			<img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-			<div class="caption">
-				<h3>{{ awesomeThing.title }}</h3>
-				<p>{{ awesomeThing.description }}</p>
-				<p><a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a></p>
+<div class="main">
+	<div class="container-fuid page-container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default app-panel black">
+					<div class="panel-body">
+						<div class="btn-group btn-group-sm" role="group" aria-label="...">
+							<button type="button" class="btn btn-default text-center">
+								<i class="fa fa-file-o"></i>
+								<br>
+								New
+							</button>
+							<button type="button" class="btn btn-default text-center">
+								<i class="fa fa-file-text"></i>
+								<br>
+								Edit
+							</button>
+							<button type="button" class="btn btn-default text-center">
+								<i class="fa fa-files-o"></i>
+								<br>
+								Copy
+							</button>
+							<button type="button" class="btn btn-default text-center">
+								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+								<br>
+								Delete
+							</button>
+						</div>
+
+						<div class="divider-vertical small"></div>
+
+						<div class="btn-group btn-group-sm" role="group" aria-label="...">
+							<button type="button" class="btn btn-default text-center">
+								<i class="fa fa-search"></i>
+								<br>
+								Search
+							</button>
+						</div>
+
+						<div class="divider-vertical small"></div>
+
+						<div class="btn-group btn-group-sm" role="group">
+							<button type="button" class="btn btn-default text-center">
+								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+								<br>
+								Play
+							</button>
+							<button type="button" class="btn btn-default text-center">
+								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+								<br>
+								Stop
+							</button>
+						</div>
+
+						<div class="divider-vertical small"></div>
+
+						<div class="btn-group btn-group-sm" role="group" aria-label="...">
+							<button type="button" class="btn btn-default text-center">
+								<i class="fa fa-bar-chart"></i>
+								<br>
+								Statistics
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
+
+		<div class="row">
+			<div class="col-sm-4 dates-filter">
+				<div kendo-tab-strip k-content-urls="[ null, null]" class="dates-filter">
+					<ul>
+						<li class="k-state-active">All</li>
+						<li>Month</li>
+						<li>Range</li>
+					</ul>
+
+
+					<div>
+						<div class="kendo-section k-content">
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" value="0" ng-model="main.spotsFilter.allOption">
+									All
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" value="1" ng-model="main.spotsFilter.allOption">
+									Current year
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" value="2" ng-model="main.spotsFilter.allOption">
+									Current month
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="optionsRadios" value="3" ng-model="main.spotsFilter.allOption">
+									Current date
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="kendo-section k-content">
+							<div class="form-group">
+								<label>Year / Month</label>
+								<input kendo-date-picker
+									   k-options="main.monthSelectorOptions"
+									   k-on-change="main.onDateChange(kendoEvent)"
+									   k-ng-model="main.spotsFilter.yearMonth"
+									   k-format="'MMMM yyyy'"
+									   style="width: 100%;" />
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="kendo-section k-content">
+							<div class="form-group">
+								<label>Start date</label>
+								<input kendo-date-picker
+									   k-ng-model="main.spotsFilter.dateRange.start"
+									   style="width: 100%;" />
+							</div>
+							<div class="form-group">
+								<label>End date</label>
+								<input kendo-date-picker
+									   k-ng-model="main.spotsFilter.dateRange.end"
+									   style="width: 100%;" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-8">
+				<div class="panel panel-default app-panel black">
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group  form-group-sm col-xs-12">
+								<label>Spot name</label>
+								<input type="text" ng-model="main.spotsFilter.gridFilter.spotName" class="form-control" placeholder="Search text">
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group  form-group-sm col-xs-5">
+								<label>Campaign</label>
+								<input type="text" ng-model="main.spotsFilter.gridFilter.campaign" class="form-control" placeholder="Search text">
+							</div>
+
+							<div class="form-group  form-group-sm col-xs-7">
+								<label>HC</label>
+								<select kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="main.hcDataSource"
+										k-ng-model="main.spotsFilter.gridFilter.hc"
+										style="width: 100%"></select>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group  form-group-sm col-xs-2">
+								<label>Status</label>
+								<select kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="main.statusDataSource"
+										k-ng-model="main.spotsFilter.gridFilter.status"
+										style="width: 100%"></select>
+							</div>
+
+							<div class="form-group  form-group-sm col-xs-2">
+								<label>Categorie</label>
+								<select kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="main.categorieDataSource"
+										k-ng-model="main.spotsFilter.gridFilter.categorie"
+										style="width: 100%"></select>
+							</div>
+
+							<div class="form-group  form-group-sm col-xs-2">
+								<label>Language</label>
+								<select kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="main.languageDataSource"
+										k-ng-model="main.spotsFilter.gridFilter.language"
+										style="width: 100%"></select>
+							</div>
+
+							<div class="form-group  form-group-sm col-xs-2">
+								<label>Format</label>
+								<select kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="main.formatDataSource"
+										k-ng-model="main.spotsFilter.gridFilter.format"
+										style="width: 100%"></select>
+							</div>
+
+							<div class="form-group  form-group-sm col-xs-2">
+								<label>Region</label>
+								<select kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="main.regionDataSource"
+										k-ng-model="main.spotsFilter.gridFilter.region"
+										style="width: 100%"></select>
+							</div>
+
+							<div class="form-group  form-group-sm col-xs-2">
+								<label>VST</label>
+								<input type="text" ng-model="main.spotsFilter.gridFilter.vst" class="form-control" placeholder="">
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 </div>
