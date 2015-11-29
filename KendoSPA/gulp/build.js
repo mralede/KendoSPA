@@ -76,8 +76,17 @@ gulp.task('copy-fa-fonts', function () {
 });
 
 gulp.task('copy-kendo-images', function () {
-	return gulp.src(conf.wiredep.directory + '/kendo-ui/styles/Black/*.*')
-	  .pipe(gulp.dest(path.join(conf.paths.dist, '/styles/Black/')));
+	return gulp.src([
+			conf.wiredep.directory + '/kendo-ui/styles/{Black,BlueOpal,Default,MetroBlack,Moonlight, Silver}/*.*',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.common.min.css',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.black.min.css',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.blueopal.min.css',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.default.min.css',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.metroblack.min.css',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.moonlight.min.css',
+			conf.wiredep.directory + '/kendo-ui/styles/kendo.silver.min.css'
+		])
+		.pipe(gulp.dest(path.join(conf.paths.dist, '/styles/')));
 });
 
 gulp.task('copy-kendo-fonts', function () {

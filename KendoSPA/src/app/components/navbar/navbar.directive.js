@@ -34,7 +34,7 @@
 		return directive;
 
 		/** @ngInject */
-		function NavbarController(moment, Fullscreen) {
+		function NavbarController(moment, Fullscreen, themeChooserService) {
 			var vm = this;
 
 			vm.toggleFullscreen = function () {
@@ -46,6 +46,18 @@
 
 
 			vm.language = "en-GB";
+
+			vm.themes = themeChooserService.themes;
+			vm.selectedTheme = themeChooserService.getTheme();
+
+			if (vm.selectedTheme && vm.selectedTheme != 'black')
+				themeChooserService.setTheme(vm.selectedTheme, false);
+
+			vm.setTheme = function (theme) {
+				vm.selectedTheme = theme;
+				themeChooserService.setTheme(theme, true);
+			};
+
 
 			// "vm.creation" is avaible by directive option "bindToController: true"
 			vm.relativeDate = moment(vm.creationDate).fromNow();

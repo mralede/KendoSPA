@@ -68,9 +68,11 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="src\app\common\common.constants.js" />
+    <Content Include="src\app\common\common.localStorage.service.js" />
     <Content Include="src\app\common\common.module.js" />
     <Content Include="src\app\components\malarkey\malarkey.less" />
     <Content Include="src\app\components\navbar\navbar.less" />
+    <Content Include="src\app\common\common.themeChooserService.js" />
     <None Include="src\app\components\navbar\sidebars.less" />
     <Content Include="src\app\index.less" />
     <Content Include="gulp\.eslintrc" />

@@ -1,42 +1,3 @@
-<!--<nav class="navbar navbar-static-top navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-		<button type="button" class="navbar-toggle toggle-sidebar-left">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-      <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span> Gulp Angular
-      </a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-      <ul class="nav navbar-nav">
-        <li class="active"><a ng-href="#">Home</a></li>
-        <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
-        <li>Application was created {{ vm.relativeDate }}.</li>
-      </ul>
-    </div>
-
-  	<div class="navbar-header navbar-right">
-  		<button type="button" class="navbar-toggle toggle-sidebar-right">
-  			<span class="icon-bar"></span>
-  			<span class="icon-bar"></span>
-  			<span class="icon-bar"></span>
-  		</button>
-  		<a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
-  			<span class="glyphicon glyphicon-home"></span> Gulp Angular
-  		</a>
-  	</div>
-
-  </div>
-</nav>-->
-
 <nav class="navbar navbar-static-top navbar-inverse navbar-fixed-top">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse" aria-expanded="false">
@@ -57,7 +18,19 @@
 			<div class="navbar-right">
 				<ul class="nav navbar-nav right-space">
 					<li><a href="#" ng-click="navbar.toggleFullscreen()"><i class="fa fa-arrows-alt fa-lg"></i></a></li>
-					<li><a ng-href="#"><i class="fa fa-cog fa-lg"></i></a></li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-cog fa-lg"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li ng-repeat="theme in navbar.themes"  ng-class="{active: navbar.selectedTheme == theme.id}">
+								<a href="#" ng-click="navbar.setTheme(theme.id)">
+									{{theme.name}}
+								</a>
+							</li>
+						</ul>
+					</li>
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
