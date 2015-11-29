@@ -14,7 +14,7 @@
 				creationDate: '='
 			},
 			controller: NavbarController,
-			controllerAs: 'vm',
+			controllerAs: 'navbar',
 			bindToController: true,
 
 			transclude: true,
@@ -34,8 +34,16 @@
 		return directive;
 
 		/** @ngInject */
-		function NavbarController(moment) {
+		function NavbarController(moment, Fullscreen) {
 			var vm = this;
+
+			vm.toggleFullscreen = function () {
+				if (Fullscreen.isEnabled())
+					Fullscreen.cancel();
+				else
+					Fullscreen.all();
+			};
+
 
 			vm.language = "en-GB";
 
