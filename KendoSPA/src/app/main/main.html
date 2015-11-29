@@ -10,17 +10,17 @@
 								<br>
 								New
 							</button>
-							<button type="button" class="btn btn-default text-center">
+							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<i class="fa fa-file-text"></i>
 								<br>
 								Edit
 							</button>
-							<button type="button" class="btn btn-default text-center">
+							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<i class="fa fa-files-o"></i>
 								<br>
 								Copy
 							</button>
-							<button type="button" class="btn btn-default text-center">
+							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								<br>
 								Delete
@@ -40,12 +40,12 @@
 						<div class="divider-vertical small"></div>
 
 						<div class="btn-group btn-group-sm" role="group">
-							<button type="button" class="btn btn-default text-center">
+							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
 								<br>
 								Play
 							</button>
-							<button type="button" class="btn btn-default text-center">
+							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
 								<br>
 								Stop
@@ -227,6 +227,13 @@
 				</div>
 			</div>
 
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<kendo-grid options="main.spotsGridOptions" k-on-change="main.spotsGridChanged(data, dataItem, columns)">
+				</kendo-grid>
+			</div>
 		</div>
 
 	</div>

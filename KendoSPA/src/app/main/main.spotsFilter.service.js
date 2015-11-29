@@ -5,6 +5,7 @@
 	  .module('kendoSpa')
 	  .factory('spotsFilterService', spotsFilter);
 
+	/** @ngInject */
 	function spotsFilter() {
 		var filter = {
 			allOption: 0,
