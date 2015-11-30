@@ -1,3 +1,100 @@
-﻿<div class="jumbotron text-center">
-	<h1>Playlists</h1>
+﻿<div class="playlists">
+	<div class="container-fuid page-container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel app-panel">
+					<div class="panel-body k-header">
+						<div class="btn-group btn-group-sm" role="group">
+							<button type="button" class="btn btn-default text-center" ng-disabled="!playlists.playlistsGridRowSelected()">
+								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+								<br>
+								Abspielen
+							</button>
+							<button type="button" class="btn btn-default text-center" ng-disabled="!playlists.playlistsGridRowSelected()">
+								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+								<br>
+								Stopp
+							</button>
+						</div>
+
+						<div class="divider-vertical small"></div>
+
+						<div class="btn-group btn-group-sm" role="group" aria-label="...">
+							<button type="button" class="btn btn-default text-center">
+								<i class="fa fa-clock-o"></i>
+								<br>
+								Aktuell
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel app-panel">
+					<div class="panel-heading k-header">Datum</div>
+					<div class="panel-body k-content">
+						<div class="row">
+							<div class="form-group  form-group-sm col-xs-6">
+								<input kendo-date-picker
+									   k-ng-model="playlists.filter.date"
+									   style="width: 100%;" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col-sm-6">
+				<div class="panel app-panel">
+					<div class="panel-heading k-header">Referrenz VST</div>
+					<div class="panel-body k-content">
+						<div class="row">
+							<div class="form-group  form-group-sm col-xs-6">
+								Goldach (3425, B, OT, D)
+							</div>
+							<div class="form-group  form-group-sm col-xs-6">
+								<button class="btn btn-default btn-sm pull-right">Verkaufstellen...</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="panel app-panel">
+					<div class="panel-heading k-header">Abspielliste (Playlist) {{ playlists.filter.date | date:"dd.MM.yyyy" }} (KW 40)</div>
+					<div class="panel-body k-content">
+						<kendo-grid options="playlists.playlistsGridOptions" 
+							k-on-change="playlists.playlistsGridChanged(data, dataItem, columns)">
+						</kendo-grid>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div class="col-sm-6">
+				<div class="panel app-panel">
+					<div class="panel-heading k-header">Nationale und regionale Spots, Image Spots: (Kein Spot selektiert)</div>
+					<div class="panel-body k-content">
+						<kendo-grid options="playlists.spotsGridOptions"
+									k-on-change="playlists.spotsGridChanged(data, dataItem, columns)">
+						</kendo-grid>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
 </div>

@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('kendoSpa', ['ui.router', 'ui.bootstrap', 'toastr', 'kendo.directives', 'FBAngular', 'kendoSpa.common']);
+    .module('kendoSpa', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'toastr', 'kendo.directives', 'FBAngular', 'kendoSpa.common']);
 
 })();

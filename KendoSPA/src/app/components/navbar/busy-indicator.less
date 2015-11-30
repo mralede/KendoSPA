@@ -1,0 +1,46 @@
+﻿.ui-view-container {
+	position: relative;
+
+	[ui-view].ng-enter, [ui-view].ng-leave {
+		position: absolute;
+		right: 0;
+		left: 0;
+
+		-moz-transition: all 0.5s ease-in-out;
+		-o-transition: all 0.5s ease-in-out;
+		-webkit-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
+	}
+
+	[ui-view].ng-enter
+	{
+		opacity: 0;
+	}
+
+	[ui-view].ng-enter-active
+	{
+		opacity: 1;
+	}
+
+	[ui-view].ng-leave
+	{
+		opacity: 1;
+	}
+
+	[ui-view].ng-leave-active
+	{
+		opacity: 0;
+	}
+
+	.navigation-busy-indicator {
+		position: absolute;
+		top: 200px;
+		left: 50%;
+
+		.spinner {
+			width: 60px;
+			height: 60px;
+			margin-left: -30px;
+		}
+	}
+}

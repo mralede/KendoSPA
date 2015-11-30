@@ -20,12 +20,12 @@
 					<li><a href="#" ng-click="navbar.toggleFullscreen()"><i class="fa fa-arrows-alt fa-lg"></i></a></li>
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<i class="fa fa-cog fa-lg"></i>
 						</a>
 						<ul class="dropdown-menu">
 							<li ng-repeat="theme in navbar.themes"  ng-class="{active: navbar.selectedTheme == theme.id}">
-								<a href="#" ng-click="navbar.setTheme(theme.id)">
+								<a href ng-click="navbar.setTheme(theme.id)">
 									{{theme.name}}
 								</a>
 							</li>
@@ -33,16 +33,16 @@
 					</li>
 
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							George Wismer <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Logout</a></li>
+							<li><a href>Logout</a></li>
 						</ul>
 					</li>
 				</ul>
 
-				<a class="navbar-brand left-space" href="#">DIGIMEDIA</a>
+				<a class="navbar-brand left-space" href>DIGIMEDIA</a>
 				<p class="navbar-text">professional</p>
 
 				<button id="menu-toggle-right" type="button" class="navbar-toggle visible navbar-btn">
@@ -62,10 +62,10 @@
 		<nav id="spy">
 			<ul class="sidebar-nav nav">
 				<li ui-sref-active="active">
-					<a href="#" ui-sref="home"><span class="fa fa-home solo">Spotverwaltung</span></a>
+					<a href ui-sref="home"><span class="fa fa-home solo">Spotverwaltung</span></a>
 				</li>
 				<li ui-sref-active="active">
-					<a href="#" ui-sref="playlists">
+					<a href ui-sref="playlists">
 						<span class="fa fa-book solo">Abspielliste</span>
 					</a>
 				</li>
@@ -123,19 +123,12 @@
 						</label>
 					</div>
 				</li>
-
-				<!--<li>
-					<a href="#anch4" data-scroll>
-						<span class="fa fa-anchor solo">Anchor 4</span>
-					</a>
-				</li>-->
 			</ul>
 		</nav>
 	</div>
 
 	<!-- Page content -->
-	<div id="page-content-wrapper" ng-transclude>
-		<!--<div ui-view></div>-->
+	<div id="page-content-wrapper"  class="ui-view-container" ng-transclude>
 	</div>
 
 </div>
