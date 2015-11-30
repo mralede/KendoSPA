@@ -83,8 +83,18 @@
 				{ spotName: "Spot 1", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: "BH;", region: "BE;NW;", status: 1, hc: "", vst: "some vst" },
 				{ spotName: "Spot 2", language: "Spanish", startDate: "2014/10/1", endDate: "2014/10/5", stType: "BH;", region: "NW;", status: 2, hc: "", vst: "some vst" },
 				{ spotName: "Spot 3", language: "German", startDate: "2015/9/1", endDate: "2015/9/5", stType: ";", region: "BE;NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 4", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" }
-			]
+				{ spotName: "Spot 4", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" },
+				{ spotName: "Spot 5", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: "BH;", region: "BE;NW;", status: 1, hc: "", vst: "some vst" },
+				{ spotName: "Spot 6", language: "Spanish", startDate: "2014/10/1", endDate: "2014/10/5", stType: "BH;", region: "NW;", status: 2, hc: "", vst: "some vst" },
+				{ spotName: "Spot 7", language: "German", startDate: "2015/9/1", endDate: "2015/9/5", stType: ";", region: "BE;NW;", status: 2, hc: "", vst: "some vst" },
+				{ spotName: "Spot 8", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" },
+				{ spotName: "Spot 9", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" },
+				{ spotName: "Spot 10", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: "BH;", region: "BE;NW;", status: 1, hc: "", vst: "some vst" },
+				{ spotName: "Spot 11", language: "Spanish", startDate: "2014/10/1", endDate: "2014/10/5", stType: "BH;", region: "NW;", status: 2, hc: "", vst: "some vst" },
+				{ spotName: "Spot 12", language: "German", startDate: "2015/9/1", endDate: "2015/9/5", stType: ";", region: "BE;NW;", status: 2, hc: "", vst: "some vst" },
+				{ spotName: "Spot 13", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" }
+			],
+			pageSize: 8
 		});
 
 		vm.selectedSpot = null;
@@ -94,9 +104,7 @@
 		};
 
 		vm.spotsGridChanged = function (data, dataItem, columns) {
-			console.log(vm.selectedSpot);
 			vm.selectedSpot = dataItem;
-			console.log(dataItem);
 		};
 
 		vm.spotsGridOptions = {
