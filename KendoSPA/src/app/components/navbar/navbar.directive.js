@@ -45,7 +45,7 @@
 			};
 
 
-			vm.language = "en-GB";
+			vm.language = "de-DE";
 
 			vm.themes = themeChooserService.themes;
 			vm.selectedTheme = themeChooserService.getTheme();

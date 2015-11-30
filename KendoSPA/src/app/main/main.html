@@ -8,22 +8,22 @@
 							<button type="button" class="btn btn-default text-center">
 								<i class="fa fa-file-o"></i>
 								<br>
-								New
+								Neu
 							</button>
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<i class="fa fa-file-text"></i>
 								<br>
-								Edit
+								Aendern
 							</button>
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<i class="fa fa-files-o"></i>
 								<br>
-								Copy
+								Kopieren
 							</button>
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								<br>
-								Delete
+								Löschen
 							</button>
 						</div>
 
@@ -33,7 +33,7 @@
 							<button type="button" class="btn btn-default text-center">
 								<i class="fa fa-search"></i>
 								<br>
-								Search
+								Suchen
 							</button>
 						</div>
 
@@ -43,12 +43,12 @@
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
 								<br>
-								Play
+								Abspielen
 							</button>
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
 								<br>
-								Stop
+								Stopp
 							</button>
 						</div>
 
@@ -58,7 +58,7 @@
 							<button type="button" class="btn btn-default text-center">
 								<i class="fa fa-bar-chart"></i>
 								<br>
-								Statistics
+								Statistik
 							</button>
 						</div>
 					</div>
@@ -82,25 +82,25 @@
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="0" ng-model="main.spotsFilter.allOption">
-									All
+									Alle daten
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="1" ng-model="main.spotsFilter.allOption">
-									Current year
+									gewähltes Jahr
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="2" ng-model="main.spotsFilter.allOption">
-									Current month
+									gewählter Monat
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="3" ng-model="main.spotsFilter.allOption">
-									Current date
+									gewähltes Datum
 								</label>
 							</div>
 						</div>
@@ -109,7 +109,7 @@
 					<div>
 						<div class="kendo-section k-content">
 							<div class="form-group">
-								<label>Year / Month</label>
+								<label>Jahr / Monat</label>
 								<input kendo-date-picker
 									   k-options="main.monthSelectorOptions"
 									   k-on-change="main.onDateChange(kendoEvent)"
@@ -123,13 +123,13 @@
 					<div>
 						<div class="kendo-section k-content">
 							<div class="form-group">
-								<label>Start date</label>
+								<label>Start datum</label>
 								<input kendo-date-picker
 									   k-ng-model="main.spotsFilter.dateRange.start"
 									   style="width: 100%;" />
 							</div>
 							<div class="form-group">
-								<label>End date</label>
+								<label>End datum</label>
 								<input kendo-date-picker
 									   k-ng-model="main.spotsFilter.dateRange.end"
 									   style="width: 100%;" />
@@ -151,7 +151,7 @@
 
 						<div class="row">
 							<div class="form-group  form-group-sm col-xs-5">
-								<label>Campaign</label>
+								<label>Kampagne</label>
 								<input type="text" ng-model="main.spotsFilter.gridFilter.campaign" class="form-control" placeholder="Search text">
 							</div>
 
@@ -178,7 +178,7 @@
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Categorie</label>
+								<label>Kategorie</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
@@ -188,7 +188,7 @@
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Language</label>
+								<label>Sprache</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
