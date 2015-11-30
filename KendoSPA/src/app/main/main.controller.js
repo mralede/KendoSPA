@@ -6,8 +6,19 @@
 	  .controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($timeout, webDevTec, toastr, spotsFilterService) {
+	function MainController($scope, $timeout, $translate, webDevTec, toastr, spotsFilterService) {
 		var vm = this;
+
+		vm.locale = null;
+
+
+		$scope.$on("kendoLocaleChanged", function (event, message) {
+			vm.spotsGridOptions.locale = message.locale;
+
+			vm.monthSelectorOptions.culture = message.locale;
+
+			vm.locale = message.locale;
+		});
 
 		function onDateChange() {
 		};
@@ -152,7 +163,6 @@
 				width: "60px"
 			}]
 		};
-
 
 		vm.spotsFilter = spotsFilterService;
 	}

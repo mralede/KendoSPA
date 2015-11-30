@@ -89,6 +89,16 @@ gulp.task('copy-kendo-images', function () {
 		.pipe(gulp.dest(path.join(conf.paths.dist, '/styles/')));
 });
 
+gulp.task('kendo-messages', function () {
+	return gulp.src(conf.wiredep.directory + '/kendo-ui/js/messages/kendo.messages.{de-DE,fr-FR,it-IT,en-US}.min.js')
+	  .pipe(gulp.dest(path.join(conf.paths.dist, '/kendo-messages')));
+});
+
+gulp.task('kendo-resources', function () {
+	return gulp.src(conf.paths.src + '/app/resources/**/*.*')
+	  .pipe(gulp.dest(path.join(conf.paths.dist, '/resources')));
+});
+
 gulp.task('copy-kendo-fonts', function () {
 	return gulp.src(conf.wiredep.directory + '/kendo-ui/styles/fonts/**/*.{eot,svg,ttf,woff,woff2}')
 	  .pipe(gulp.dest(path.join(conf.paths.dist, '/styles/fonts/')));
@@ -96,7 +106,7 @@ gulp.task('copy-kendo-fonts', function () {
 
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
-gulp.task('fonts', ['copy-fa-fonts', 'copy-kendo-images', 'copy-kendo-fonts'], function () {
+gulp.task('fonts', ['copy-fa-fonts', 'copy-kendo-images', 'copy-kendo-fonts', 'kendo-messages', 'kendo-resources'], function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())

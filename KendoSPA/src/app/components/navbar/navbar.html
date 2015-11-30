@@ -80,49 +80,19 @@
 				<!--<li class="sidebar-brand">
 					<a href="#home"><span class="fa fa-home solo">First link</span></a>
 				</li>-->
-				<li>
+
+
+				<li ng-repeat="locale in navbar.locales">
 					<div class="nav-item">
-						<i class="nav-icon flag-GB solo"></i>
+						<i class="nav-icon {{locale.flag}} solo"></i>
 
 						<label class="radio">
-							<input type="radio" name="language" ng-model="navbar.language" value="en-GB">
-							English
+							<input type="radio" name="language" ng-model="navbar.currentLocale" ng-change="navbar.changeLocale(locale.id)" ng-value="locale.id">
+							{{locale.name | translate}}
 						</label>
 					</div>
 				</li>
 
-				<li>
-					<div class="nav-item">
-						<i class="nav-icon flag-DE solo"></i>
-
-						<label class="radio">
-							<input type="radio" name="language" ng-model="navbar.language" value="de-DE">
-							Deutsch
-						</label>
-					</div>
-				</li>
-
-				<li>
-					<div class="nav-item">
-						<i class="nav-icon flag-FR solo"></i>
-
-						<label class="radio">
-							<input type="radio" name="language" ng-model="navbar.language" value="fr-FR">
-							Französisch
-						</label>
-					</div>
-				</li>
-
-				<li>
-					<div class="nav-item">
-						<i class="nav-icon flag-ES solo"></i>
-
-						<label class="radio">
-							<input type="radio" name="language" ng-model="navbar.language" value="it-IT">
-							Italienisch
-						</label>
-					</div>
-				</li>
 			</ul>
 		</nav>
 	</div>

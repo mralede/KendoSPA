@@ -6,9 +6,22 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, $translateProvider, tmhDynamicLocaleProvider, toastrConfig) {
     // Enable log
-    $logProvider.debugEnabled(true);
+  	$logProvider.debugEnabled(true);
+
+
+
+  	$translateProvider.useMissingTranslationHandlerLog();
+
+  	$translateProvider.useStaticFilesLoader({
+  		prefix: 'resources/locale-',// path to translations files
+  		suffix: '.json'// suffix, currently- extension of the translations
+  	});
+  	$translateProvider.preferredLanguage('de_DE');// is applied on first load
+  	$translateProvider.useLocalStorage();// saves selected language to localStorage
+
+  	tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
 
     // Set options third-party lib
     toastrConfig.allowHtml = true;

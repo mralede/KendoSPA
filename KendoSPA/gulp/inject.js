@@ -15,7 +15,17 @@ gulp.task('inject-reload', ['inject'], function() {
   browserSync.reload();
 });
 
-gulp.task('inject', ['scripts', 'styles'], function () {
+gulp.task('copy-resources', function () {
+	return gulp.src(conf.paths.src + '//app/resources/**/*.*')
+	  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/resources')));
+});
+
+gulp.task('copy-kendo-messages', function () {
+	return gulp.src(conf.wiredep.directory + '/kendo-ui/js/messages/kendo.messages.{de-DE,fr-FR,it-IT,en-US}.min.js')
+	  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/kendo-messages')));
+});
+
+gulp.task('inject', ['scripts', 'styles', 'copy-resources', 'copy-kendo-messages'], function () {
   var injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.css'),
     path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')

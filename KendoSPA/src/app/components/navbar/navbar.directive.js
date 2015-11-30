@@ -34,7 +34,7 @@
 		return directive;
 
 		/** @ngInject */
-		function NavbarController(moment, Fullscreen, themeChooserService) {
+		function NavbarController(moment, Fullscreen, themeChooserService, LOCALES, localizationService) {
 			var vm = this;
 
 			vm.toggleFullscreen = function () {
@@ -44,8 +44,12 @@
 					Fullscreen.all();
 			};
 
+			vm.locales = LOCALES.locales;
+			vm.currentLocale = localizationService.getLocale();
 
-			vm.language = "de-DE";
+			vm.changeLocale = function (locale) {
+				localizationService.setLocale(locale);
+			};
 
 			vm.themes = themeChooserService.themes;
 			vm.selectedTheme = themeChooserService.getTheme();

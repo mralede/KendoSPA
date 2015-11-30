@@ -70,6 +70,7 @@
     <Content Include="src\app\common\common.constants.js" />
     <Content Include="src\app\common\common.localStorage.service.js" />
     <Content Include="src\app\common\common.module.js" />
+    <Content Include="src\app\components\localization\localizationService.js" />
     <Content Include="src\app\components\malarkey\malarkey.less" />
     <Content Include="src\app\components\navbar\navbar.less" />
     <Content Include="src\app\common\common.themeChooserService.js" />
@@ -90,6 +91,10 @@
     <Content Include="src\app\playlists\playlists.controller.js" />
     <Content Include="src\app\panel.less" />
     <Content Include="src\app\main\main.less" />
+    <Content Include="src\app\resources\locale-de_DE.json" />
+    <Content Include="src\app\resources\locale-en_US.json" />
+    <Content Include="src\app\resources\locale-fr_FR.json" />
+    <Content Include="src\app\resources\locale-it_IT.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
