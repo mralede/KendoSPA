@@ -6,7 +6,7 @@
     .controller('PlaylistsController', PlaylistsController);
 
   /** @ngInject */
-  function PlaylistsController($timeout, webDevTec, toastr) {
+  function PlaylistsController($timeout, toastr) {
     var vm = this;
 
     vm.playlistsGridDataSource = new kendo.data.DataSource({

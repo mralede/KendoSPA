@@ -6,7 +6,7 @@
 	  .controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($scope, $timeout, $translate, webDevTec, toastr,
+	function MainController($scope, $timeout, $translate, toastr,
 							spotsFilterService, uiDataSourcesService, addSpotModalService, editSpotModalService) {
 		var vm = this;
 

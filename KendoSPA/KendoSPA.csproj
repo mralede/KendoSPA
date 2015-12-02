@@ -72,7 +72,6 @@
     <Content Include="src\app\common\common.module.js" />
     <Content Include="src\app\common\common.uiDataSources.service.js" />
     <Content Include="src\app\components\localization\localizationService.js" />
-    <Content Include="src\app\components\malarkey\malarkey.less" />
     <Content Include="src\app\components\navbar\navbar.less" />
     <Content Include="src\app\common\common.themeChooserService.js" />
     <Content Include="src\app\components\navbar\busy-indicator.less" />
@@ -122,15 +121,9 @@
     <Content Include="gulp\watch.js" />
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
-    <Content Include="src\app\components\githubContributor\githubContributor.service.js" />
-    <Content Include="src\app\components\githubContributor\githubContributor.service.spec.js" />
-    <Content Include="src\app\components\malarkey\malarkey.directive.js" />
-    <Content Include="src\app\components\malarkey\malarkey.directive.spec.js" />
     <Content Include="src\app\components\navbar\navbar.directive.js" />
     <Content Include="src\app\components\navbar\navbar.directive.spec.js" />
     <Content Include="src\app\components\navbar\navbar.html" />
-    <Content Include="src\app\components\webDevTec\webDevTec.service.js" />
-    <Content Include="src\app\components\webDevTec\webDevTec.service.spec.js" />
     <Content Include="src\app\index.config.js" />
     <Content Include="src\app\index.constants.js" />
     <Content Include="src\app\index.module.js" />
