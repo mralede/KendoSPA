@@ -70,6 +70,7 @@
     <Content Include="src\app\common\common.constants.js" />
     <Content Include="src\app\common\common.localStorage.service.js" />
     <Content Include="src\app\common\common.module.js" />
+    <Content Include="src\app\common\common.uiDataSources.service.js" />
     <Content Include="src\app\components\localization\localizationService.js" />
     <Content Include="src\app\components\malarkey\malarkey.less" />
     <Content Include="src\app\components\navbar\navbar.less" />
@@ -87,6 +88,10 @@
     <Content Include="bower.json" />
     <Content Include="package.json" />
     <Content Include="src\app\flags.less" />
+    <Content Include="src\app\main\addSpot.html" />
+    <Content Include="src\app\main\editSpot.html" />
+    <Content Include="src\app\main\main.addSpot.modalService.js" />
+    <Content Include="src\app\main\main.editSpot.modalService.js" />
     <Content Include="src\app\main\main.spotsFilter.service.js" />
     <Content Include="src\app\playlists\playlists.controller.js" />
     <Content Include="src\app\panel.less" />
@@ -135,17 +140,7 @@
     <Content Include="src\app\main\main.controller.spec.js" />
     <Content Include="src\app\main\main.html" />
     <Content Include="src\app\playlists\playlists.html" />
-    <Content Include="src\assets\images\angular.png" />
-    <Content Include="src\assets\images\bootstrap.png" />
-    <Content Include="src\assets\images\browsersync.png" />
     <Content Include="src\assets\images\flags.png" />
-    <Content Include="src\assets\images\gulp.png" />
-    <Content Include="src\assets\images\jasmine.png" />
-    <Content Include="src\assets\images\karma.png" />
-    <Content Include="src\assets\images\less.png" />
-    <Content Include="src\assets\images\protractor.png" />
-    <Content Include="src\assets\images\ui-bootstrap.png" />
-    <Content Include="src\assets\images\yeoman.png" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\index.html" />
     <Content Include="Web.config" />

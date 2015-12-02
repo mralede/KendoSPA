@@ -5,12 +5,14 @@
 				<div class="panel app-panel">
 					<div class="panel-body k-header">
 						<div class="btn-group btn-group-sm" role="group" aria-label="...">
-							<button type="button" class="btn btn-default text-center">
+							<button type="button" class="btn btn-default text-center" ng-click="main.addSpot($event)">
 								<i class="fa fa-file-o"></i>
 								<br>
 								Neu
 							</button>
-							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
+							<button type="button" class="btn btn-default text-center" 
+									ng-disabled="!main.spotsGridRowSelected()"  
+									ng-click="main.editSpot($event)">
 								<i class="fa fa-file-text"></i>
 								<br>
 								Aendern
@@ -161,10 +163,10 @@
 							<div class="form-group  form-group-sm col-xs-7">
 								<label>HC</label>
 								<select kendo-drop-down-list
-										k-rebind="main.locale"
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.hcDataSource"
+										k-rebind="main.hcDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.hc"
 										style="width: 100%"></select>
 							</div>
@@ -178,6 +180,7 @@
 										k-data-value-field="'id'"
 										k-data-source="main.statusDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.status"
+										k-rebind="main.statusDataSource"
 										style="width: 100%"></select>
 							</div>
 
@@ -187,6 +190,7 @@
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.categorieDataSource"
+										k-rebind="main.categorieDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.categorie"
 										style="width: 100%"></select>
 							</div>
@@ -197,6 +201,7 @@
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.languageDataSource"
+										k-rebind="main.languageDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.language"
 										style="width: 100%"></select>
 							</div>
@@ -207,6 +212,7 @@
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.formatDataSource"
+										k-rebind="main.formatDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.format"
 										style="width: 100%"></select>
 							</div>
@@ -217,6 +223,7 @@
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.regionDataSource"
+										k-rebind="main.regionDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.region"
 										style="width: 100%"></select>
 							</div>

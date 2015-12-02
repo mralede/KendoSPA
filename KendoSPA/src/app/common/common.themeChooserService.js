@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa')
+	  .module('kendoSpa.common')
 	  .factory('themeChooserService', themeChooserService);
 
 	/** @ngInject */

@@ -6,9 +6,9 @@
 	  .factory('localizationService', localizationService);
 
 	/** @ngInject */
-	function localizationService($translate, LOCALES, $rootScope, tmhDynamicLocale) {
+	function localizationService($translate, LOCALES, $rootScope, tmhDynamicLocale, localStorageService) {
 		var data = {
-			currentLocale: $translate.use() || LOCALES.preferredLocale
+			currentLocale: null //$translate.use() || LOCALES.preferredLocale
 		};
 
 		function toKendoLocale(locale) {
@@ -17,6 +17,8 @@
 
 		function setLocale (locale) {
 			data.currentLocale = locale;
+
+			localStorageService.set("LOCALE", locale);
 
 			$translate.use(locale);
 
@@ -32,8 +34,8 @@
 		$rootScope.$on('$translateChangeSuccess', function (event, data) {
 			document.documentElement.setAttribute('lang', data.language);// sets "lang" attribute to html
 
-			// asking angular-dynamic-locale to load and apply proper AngularJS $locale setting
-			tmhDynamicLocale.set(data.language.toLowerCase().replace(/_/g, '-'));
+			//// asking angular-dynamic-locale to load and apply proper AngularJS $locale setting
+			//tmhDynamicLocale.set(data.language.toLowerCase().replace(/_/g, '-'));
 		});
 
 		function loadKendoLocale(locale) {
@@ -50,7 +52,7 @@
 			})
 		};
 
-		loadKendoLocale(data.currentLocale);
+		setLocale(localStorageService.get("LOCALE") || LOCALES.preferredLocale);
 
 		return {
 			getLocale: getLocale,

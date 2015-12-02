@@ -11,7 +11,7 @@
 			{ id: "fr_FR", name: "Französisch", flag: "flag-FR" },
 			{ id: "it_IT", name: "Italienisch", flag: "flag-IT" }
 		],
-		'preferredLocale': 'de-DE'
+		'preferredLocale': 'de_DE'
 	})
     .constant('malarkey', malarkey)
     .constant('moment', moment);

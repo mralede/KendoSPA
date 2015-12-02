@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('kendoSpa.common', []);
+    .module('kendoSpa.common', ['pascalprecht.translate']);
 
 })();
