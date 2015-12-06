@@ -13,7 +13,7 @@
 
 		function toKendoLocale(locale) {
 			return locale.replace(/_/g, '-');
-		};
+		}
 
 		function setLocale (locale) {
 			data.currentLocale = locale;
@@ -23,11 +23,11 @@
 			$translate.use(locale);
 
 			loadKendoLocale(locale);
-		};
+		}
 
 		function getLocale() {
 			return data.currentLocale;
-		};
+		}
 
 		// EVENTS
 		// on successful applying translations by angular-translate
@@ -41,7 +41,7 @@
 		function loadKendoLocale(locale) {
 			var kendoLocale = toKendoLocale(locale);
 
-			$.getScript("/kendo-messages/kendo.messages." + kendoLocale + ".min.js", function () {
+			$.getScript("kendo-messages/kendo.messages." + kendoLocale + ".min.js", function () {
 				$rootScope.$apply(function () {
 					kendo.culture(kendoLocale); /* change kendo culture */
 
@@ -50,7 +50,7 @@
 					});
 				})
 			})
-		};
+		}
 
 		setLocale(localStorageService.get("LOCALE") || LOCALES.preferredLocale);
 

@@ -2,15 +2,15 @@
   'use strict';
 
   angular
-    .module('kendoSpa')
-    .controller('PlaylistsController', PlaylistsController);
+	.module('kendoSpa')
+	.controller('PlaylistsController', PlaylistsController);
 
   /** @ngInject */
   function PlaylistsController($timeout, toastr) {
-    var vm = this;
+	var vm = this;
 
-    vm.playlistsGridDataSource = new kendo.data.DataSource({
-    	data: [
+	vm.playlistsGridDataSource = new kendo.data.DataSource({
+		data: [
 			{ spotName: "Spot 1", type: "T", abspielzeit: "6:01" },
 			{ spotName: "Spot 2", type: "M", abspielzeit: "3:59" },
 			{ spotName: "Spot 3", type: "L", abspielzeit: "5:45" },
@@ -24,46 +24,46 @@
 			{ spotName: "Spot 11", type: "T", abspielzeit: "6:01" },
 			{ spotName: "Spot 12", type: "T", abspielzeit: "6:01" },
 			{ spotName: "Spot 13", type: "T", abspielzeit: "6:01" }
-    	],
-    	pageSize: 8
-    });
+		],
+		pageSize: 8
+	});
 
-    vm.selectedPlaylist = null;
+	vm.selectedPlaylist = null;
 
-    vm.playlistsGridRowSelected = function () {
-    	return !!vm.selectedPlaylist;
-    };
+	vm.playlistsGridRowSelected = function () {
+		return !!vm.selectedPlaylist;
+	};
 
-    vm.playlistsGridChanged = function (data, dataItem, columns) {
-    	vm.selectedPlaylist = dataItem;
-    };
+	vm.playlistsGridChanged = function (data, dataItem, columns) {
+		vm.selectedPlaylist = dataItem;
+	};
 
-    vm.playlistsGridOptions = {
-    	dataSource: vm.playlistsGridDataSource,
-    	sortable: true,
-    	pageable: true,
-    	filterable: true,
-    	selectable: "row",
-    	columns: [{
-    		field: "abspielzeit",
-    		title: "Abspielzeit",
-    		width: "60px"
-    	}, {
-    		field: "type",
-    		title: "Type",
-    		width: "60px"
-    	}, {
-    		field: "spotName",
-    		title: "Spot Name",
-    		width: "120px",
-    		filterable: true
-    	}]
-    };
+	vm.playlistsGridOptions = {
+		dataSource: vm.playlistsGridDataSource,
+		sortable: true,
+		pageable: true,
+		filterable: true,
+		selectable: "row",
+		columns: [{
+			field: "abspielzeit",
+			title: "Abspielzeit",
+			width: "60px"
+		}, {
+			field: "type",
+			title: "Type",
+			width: "60px"
+		}, {
+			field: "spotName",
+			title: "Spot Name",
+			width: "120px",
+			filterable: true
+		}]
+	};
 
 
 
-    vm.spotsGridDataSource = new kendo.data.DataSource({
-    	data: [
+	vm.spotsGridDataSource = new kendo.data.DataSource({
+		data: [
 			{ spotName: "Spot 1" },
 			{ spotName: "Spot 2" },
 			{ spotName: "Spot 3" },
@@ -77,29 +77,29 @@
 			{ spotName: "Spot 11" },
 			{ spotName: "Spot 12" },
 			{ spotName: "Spot 13" }
-    	],
-    	pageSize: 8
-    });
+		],
+		pageSize: 8
+	});
 
-    vm.selectedSpot = null;
+	vm.selectedSpot = null;
 
-    vm.spotsGridChanged = function (data, dataItem, columns) {
-    	vm.selectedSpot = dataItem;
-    };
+	vm.spotsGridChanged = function (data, dataItem, columns) {
+		vm.selectedSpot = dataItem;
+	};
 
-    vm.spotsGridOptions = {
-    	dataSource: vm.spotsGridDataSource,
-    	sortable: true,
-    	pageable: true,
-    	filterable: true,
-    	selectable: "row",
-    	columns: [{
-    		field: "spotName",
-    		title: "Spot Name",
-    		width: "100%",
-    		filterable: true
-    	}]
-    };
+	vm.spotsGridOptions = {
+		dataSource: vm.spotsGridDataSource,
+		sortable: true,
+		pageable: true,
+		filterable: true,
+		selectable: "row",
+		columns: [{
+			field: "spotName",
+			title: "Spot Name",
+			width: "100%",
+			filterable: true
+		}]
+	};
 
   }
 })();

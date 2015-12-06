@@ -6,15 +6,15 @@
 	  .factory('uiDataSourcesService', uiDataSourcesService);
 
 	/** @ngInject */
-	function uiDataSourcesService($q, $translate) {
+	function uiDataSourcesService($q, $translate, _) {
 
 		function getHcDataSource() {
 			return $translate(['Alle', 'Aktive', 'Inaktive'])
 				.then(function (translations) {
 					return [
 						{ id: 0, name: "Alle" },
-						{ id: 1, name: "Option 1" },
-						{ id: 2, name: "Option 2" }
+						{ id: 1, name: "HC1" },
+						{ id: 2, name: "HC2" }
 					];
 				});
 		}
@@ -52,10 +52,10 @@
 		function getLanguageDataSource() {
 			return $translate(['Alle', 'Deutsch', 'Französisch', "Italienisch"]).then(function (translations) {
 				return [
-					{ id: 0, name: translations["Alle"] },
-					{ id: 1, name: translations["Deutsch"] },
-					{ id: 2, name: translations["Französisch"] },
-					{ id: 3, name: translations["Italienisch"] }
+					{ id: null, name: translations["Alle"] },
+					{ id: "D", name: translations["Deutsch"] },
+					{ id: "F", name: translations["Französisch"] },
+					{ id: "I", name: translations["Italienisch"] }
 				];
 			});
 		}
@@ -65,10 +65,11 @@
 				return [
 					{ id: 0, name: "Alle" },
 					{ id: 1, name: "BE" },
-					{ id: 2, name: "NWZZ" },
-					{ id: 3, name: "OT" },
-					{ id: 4, name: "SR" },
-					{ id: 5, name: "TOEL" }
+					{ id: 2, name: "NW" },
+					{ id: 3, name: "ZZ" },
+					{ id: 4, name: "OT" },
+					{ id: 5, name: "SR" },
+					{ id: 6, name: "TOEL" }
 				];
 			});
 		}

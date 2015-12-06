@@ -6,23 +6,41 @@
 	  .controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($scope, $timeout, $translate, toastr,
-							spotsFilterService, uiDataSourcesService, addSpotModalService, editSpotModalService) {
+	function MainController($scope, $timeout, $translate, toastr, _,
+							spotsFilterService, uiDataSourcesService, addSpotModalService, editSpotModalService,
+							spotsDataService) {
 		var vm = this;
 
 		vm.addSpot = function ($event) {
-			addSpotModalService
+			editSpotModalService
 				.open()
-				.then(function (newItem) {
-					vm.spotsGridDataSource.add(newItem);
+				.then(function (spot) {
+					spotsDataService.addSpot(spot);
 				});
 		};
 
 		vm.editSpot = function ($event) {
 			editSpotModalService
-				.open(vm.selectedSpot)
-				.then(function (newItem) {
+				.open(vm.selectedSpot.getData())
+				.then(function (spot) {
+					console.log(spot);
+					spotsDataService.updateSpot(spot);
+
+					vm.selectedSpot = null;
 				});
+		};
+
+		vm.copySpot = function ($event) {
+			var spot = vm.selectedSpot.clone();
+			spotsDataService.addSpot(spot);
+
+			vm.selectedSpot = null;
+		};
+
+		vm.deleteSpot = function ($event) {
+			spotsDataService.deleteSpot(vm.selectedSpot.get("id"));
+
+			vm.selectedSpot = null;
 		};
 
 		vm.locale = null;
@@ -48,21 +66,16 @@
 
 
 		vm.spotsGridDataSource = new kendo.data.DataSource({
-			data: [
-				{ spotName: "Spot 1", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: "BH;", region: "BE;NW;", status: 1, hc: "", vst: "some vst" },
-				{ spotName: "Spot 2", language: "Spanish", startDate: "2014/10/1", endDate: "2014/10/5", stType: "BH;", region: "NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 3", language: "German", startDate: "2015/9/1", endDate: "2015/9/5", stType: ";", region: "BE;NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 4", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" },
-				{ spotName: "Spot 5", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: "BH;", region: "BE;NW;", status: 1, hc: "", vst: "some vst" },
-				{ spotName: "Spot 6", language: "Spanish", startDate: "2014/10/1", endDate: "2014/10/5", stType: "BH;", region: "NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 7", language: "German", startDate: "2015/9/1", endDate: "2015/9/5", stType: ";", region: "BE;NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 8", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" },
-				{ spotName: "Spot 9", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" },
-				{ spotName: "Spot 10", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: "BH;", region: "BE;NW;", status: 1, hc: "", vst: "some vst" },
-				{ spotName: "Spot 11", language: "Spanish", startDate: "2014/10/1", endDate: "2014/10/5", stType: "BH;", region: "NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 12", language: "German", startDate: "2015/9/1", endDate: "2015/9/5", stType: ";", region: "BE;NW;", status: 2, hc: "", vst: "some vst" },
-				{ spotName: "Spot 13", language: "English", startDate: "2015/10/1", endDate: "2015/10/5", stType: ";", region: "NW;", status: 1, hc: "", vst: "some vst" }
-			],
+			data: spotsDataService.getSpots(),
+			schema: {
+				model: {
+					id: "id",
+					fields: {
+						startDate: { type: "date", format: "{0:dd/MM/yyyy}" },
+						endDate: { type: "date", format: "{0:dd/MM/yyyy}" }
+					}
+				}
+			},
 			pageSize: 8
 		});
 
@@ -115,7 +128,7 @@
 					filterable: true,
 					selectable: "row",
 					columns: [{
-						field: "spotName",
+						field: "spotName()",
 						title: "Spot Name",
 						width: "120px",
 						filterable: true
@@ -126,10 +139,14 @@
 					}, {
 						field: "startDate",
 						title: "Start Datum",
+						type: "date",
+						format: "{0:dd/MM/yyyy}",
 						width: "60px"
 					}, {
 						field: "endDate",
 						title: "End Datum",
+						type: "date",
+						format: "{0:dd/MM/yyyy}",
 						width: "60px"
 					}, {
 						field: "vstType",

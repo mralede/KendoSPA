@@ -12,8 +12,6 @@
 			{ id: "it_IT", name: "Italienisch", flag: "flag-IT" }
 		],
 		'preferredLocale': 'de_DE'
-	})
-    .constant('malarkey', malarkey)
-    .constant('moment', moment);
+	});
 
 })();

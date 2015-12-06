@@ -17,12 +17,16 @@
 								<br>
 								Aendern
 							</button>
-							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
+							<button type="button" class="btn btn-default text-center" 
+									ng-disabled="!main.spotsGridRowSelected()"
+									ng-click="main.copySpot($event)">
 								<i class="fa fa-files-o"></i>
 								<br>
 								Kopieren
 							</button>
-							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
+							<button type="button" class="btn btn-default text-center" 
+									ng-disabled="!main.spotsGridRowSelected()"
+									ng-click="main.deleteSpot($event)">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								<br>
 								Löschen

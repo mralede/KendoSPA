@@ -1,12 +1,236 @@
-﻿
-<div class="modal-header">
-	<h3 class="modal-title">Add spot</h3>
+﻿<div class="edit-spot">
+	<div class="modal-header k-header">
+		<h3 class="modal-title">
+			<span ng-if="editMode">Spot ändern</span>
+			<span ng-if="!editMode">Neu Spot</span>
+		</h3>
+	</div>
+
+	<form id="editSpotForm" name="editSpotForm" kendo-validator="validator" k-options="validatorOptions" ng-submit="submit($event)" novalidate>
+		<!--<form name="editSpotForm" ng-submit="submit($event)" novalidate>-->
+		<div class="modal-body">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="row condensed-grid  edit-spot-form k-content">
+						<div class="form-group col-sm-10">
+							<label class="control-label">Spot Name</label>
+
+							<div class="row">
+								<div class="col-sm-3">
+									<select name="type" required
+											kendo-drop-down-list
+											k-data-text-field="'name'"
+											k-data-value-field="'id'"
+											k-data-source="typeDataSource"
+											ng-model="spot.type"
+											k-rebind="typeDataSource"
+											style="width: 100%"></select>
+									<!--<div class="form-input-error" ng-show="(editSpotForm.type.$dirty || submitted) && editSpotForm.type.$error.required">
+										Required
+									</div>-->
+								</div>
+
+								<div class="col-sm-2">
+									<select name="language" required
+											kendo-drop-down-list
+											k-data-text-field="'name'"
+											k-data-value-field="'id'"
+											k-data-source="languageDataSource"
+											ng-model="spot.language"
+											k-rebind="languageDataSource"
+											style="width: 100%"></select>
+								</div>
+
+								<div class="col-sm-2">
+									<input name="nameThirdOption" required
+										   type="text"
+										   ng-model="spot.nameThirdOption"
+										   class="form-control input-sm" placeholder="">
+								</div>
+
+								<div class="col-sm-5">
+									<input name="name" required
+										   type="text"
+										   ng-model="spot.name"
+										   class="form-control input-sm" placeholder="">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group col-sm-2">
+							<label class="control-label">Status</label>
+
+							<div class="row">
+								<div class="col-sm-12">
+									<select name="status" required
+											kendo-drop-down-list
+											k-data-text-field="'name'"
+											k-data-value-field="'id'"
+											k-data-source="statusDataSource"
+											ng-model="spot.status"
+											k-rebind="statusDataSource"
+											style="width: 100%"></select>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="row condensed-grid edit-spot-form k-content">
+						<div class="col-sm-5 form-group">
+							<label class="control-label">Kampaign</label>
+
+							<div>
+								<input type="text"
+									   ng-model="spot.campaign"
+									   class="form-control input-sm" placeholder="">
+							</div>
+						</div>
+
+						<div class="form-group col-sm-7">
+							<label class="control-label">HC</label>
+
+							<div>
+								<select name="hc" required
+										kendo-drop-down-list
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="hcDataSource"
+										ng-model="spot.hc"
+										k-rebind="hcDataSource"
+										k-option-label="'<nicht definiert>'"
+										style="width: 100%"></select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row condensed-grid edit-spot-form  k-content">
+						<div class="form-group col-sm-12">
+							<label class="control-label">Spot thema</label>
+
+							<div>
+								<input type="text"
+									   ng-model="spot.theme"
+									   class="form-control input-sm" placeholder="">
+							</div>
+						</div>
+					</div>
+
+					<div class="row condensed-grid edit-spot-form  k-content">
+						<div class="form-group col-sm-12">
+							<label class="control-label">Spot text</label>
+
+							<div>
+								<textarea type="text"
+										  ng-model="spot.text"
+										  rows="3"
+										  class="form-control input-sm" placeholder=""></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="row condensed-grid edit-spot-form k-content">
+						<div class="form-group col-sm-6">
+							<label class="control-label">Start Datum</label>
+
+							<div>
+								<input name="startDate" required
+									   kendo-date-picker
+									   k-ng-model="spot.startDate"
+									   style="width: 100%;" />
+								<span class="k-invalid-msg" data-for="startDate"></span>
+							</div>
+						</div>
+
+						<div class="form-group col-sm-6">
+							<label class="control-label">End Datum</label>
+
+							<div>
+								<input name="endDate" required
+									   kendo-date-picker
+									   k-ng-model="spot.endDate"
+									   style="width: 100%;" />
+								<span class="k-invalid-msg" data-for="endDate"></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="row condensed-grid edit-spot-form  k-content">
+						<div class="form-group col-sm-12">
+							<div class="upload-button-container">
+								<button class="k-button pull-left" type="button">Audofile laden...</button>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-4">
+					<div class="row condensed-grid edit-spot-form k-content">
+						<div class="col-sm-5 col-sm-offset-1">
+							<div class="form-group">
+								<label class="control-label">Format</label>
+								<div class="validation-message-container">
+									<span class="k-invalid-msg" data-for="format"></span>
+								</div>
+
+								<div class="checkbox" ng-repeat="item in formats">
+									<label>
+										<input name="format" type="checkbox" ng-value="item.id" ng-model="item.selected">
+										{{item.name}}
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="edit-spot-form col-sm-5 col-sm-offset-1">
+							<div class="form-group">
+								<label class="control-label">Regionen</label>
+								<div class="validation-message-container">
+									<span class="k-invalid-msg" data-for="region"></span>
+								</div>
+
+								<div class="checkbox" ng-repeat="item in regions">
+									<label>
+										<input name="region" type="checkbox" ng-value="item.id" ng-model="item.selected">
+										{{item.name}}
+									</label>
+								</div>
+								</a>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row condensed-grid edit-spot-form k-content">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label class="control-label">VST</label>
+
+								<div>
+									<textarea type="text"
+											  ng-model="spot.vst"
+											  rows="4"
+											  class="form-control input-sm" placeholder=""></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 form-group">
+							<button class="k-button">Einfügen</button>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div class="modal-footer k-content">
+			<button class="k-button k-primary" style="margin-right: 5px;" type="submit">Speichern</button>
+
+			<button class="k-button btn-warning" type="button" ng-click="cancel()">Abbrechen</button>
+		</div>
+	</form>
 </div>
-<div class="modal-body">
-	<div>Edit</div>
-	<div>{{spot.spotName}}</div>
-</div>
-<div class="modal-footer">
-	<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-</div>
+

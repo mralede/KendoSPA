@@ -30,7 +30,7 @@
 			//}, function () {
 			//	$log.info('Modal dismissed at: ' + new Date());
 			//});
-		};
+		}
 
 		return {
 			open: open

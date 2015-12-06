@@ -71,10 +71,13 @@
     <Content Include="src\app\common\common.localStorage.service.js" />
     <Content Include="src\app\common\common.module.js" />
     <Content Include="src\app\common\common.uiDataSources.service.js" />
+    <Content Include="src\app\common\model\Spot.js" />
+    <Content Include="src\app\common\services\spotsDataService.js" />
     <Content Include="src\app\components\localization\localizationService.js" />
     <Content Include="src\app\components\navbar\navbar.less" />
     <Content Include="src\app\common\common.themeChooserService.js" />
     <Content Include="src\app\components\navbar\busy-indicator.less" />
+    <Content Include="src\app\bootstrap-addons.less" />
     <None Include="src\app\components\navbar\sidebars.less" />
     <Content Include="src\app\index.less" />
     <Content Include="gulp\.eslintrc" />
@@ -99,6 +102,8 @@
     <Content Include="src\app\resources\locale-en_US.json" />
     <Content Include="src\app\resources\locale-fr_FR.json" />
     <Content Include="src\app\resources\locale-it_IT.json" />
+    <Content Include="src\app\main\edit-spot.less" />
+    <Content Include="src\app\main\form-validation.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
