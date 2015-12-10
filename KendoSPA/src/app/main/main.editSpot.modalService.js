@@ -4,7 +4,7 @@
 	angular
 	.module('kendoSpa')
 	.factory('editSpotModalService', editSpotModalService)
-	.controller('EditSpotModalCtrl', EditSpotModalCtrl);
+	.controller('EditSpotModalController', EditSpotModalController);
 
 	/** @ngInject */
 	function editSpotModalService($uibModal) {
@@ -14,7 +14,7 @@
 			var modalInstance = $uibModal.open({
 				animation: true,
 				templateUrl: 'app/main/editSpot.html',
-				controller: 'EditSpotModalCtrl',
+				controller: 'EditSpotModalController',
 				size: "lg",
 				resolve: {
 					spot: function () {
@@ -24,7 +24,7 @@
 			});
 
 			return modalInstance.result;
-		};
+		}
 
 		return {
 			open: open
@@ -32,7 +32,7 @@
 	}
 
 	/** @ngInject */
-	function EditSpotModalCtrl($scope, $uibModalInstance, $translate, Spot, spot, uiDataSourcesService) {
+	function EditSpotModalController($scope, $uibModalInstance, $translate, Spot, spot, uiDataSourcesService) {
 		//$scope.spot = spot;
 
 		if (spot) {
@@ -176,6 +176,15 @@
 													return x.id;
 												})
 												.value();
+
+				$translate(["<nicht definiert>"]).then(function (translations) {
+					$scope.hcDropDownOptions = {
+						dataSource: $scope.hcDataSource,
+						dataTextField:"name",
+						dataValueField:"id",
+						optionLabel: translations["<nicht definiert>"]
+					};
+				});
 			});
 		};
 

@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa')
-	  .factory('spotsFilterService', spotsFilter);
+		.module('kendoSpa')
+		.factory('spotsFilterService', spotsFilter);
 
 	/** @ngInject */
 	function spotsFilter() {
@@ -18,7 +18,7 @@
 				hc: 0,
 				status: 0,
 				categorie: 0,
-				language: 0,
+				language: null,
 				format: 0,
 				region: 0,
 				vst: null

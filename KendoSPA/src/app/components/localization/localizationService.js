@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa')
-	  .factory('localizationService', localizationService);
+	.module('kendoSpa')
+	.factory('localizationService', localizationService);
 
 	/** @ngInject */
 	function localizationService($translate, LOCALES, $rootScope, tmhDynamicLocale, localStorageService) {

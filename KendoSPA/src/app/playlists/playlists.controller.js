@@ -6,8 +6,17 @@
 	.controller('PlaylistsController', PlaylistsController);
 
   /** @ngInject */
-  function PlaylistsController($timeout, toastr) {
+  function PlaylistsController($scope, $timeout, $translate, kendo) {
 	var vm = this;
+
+	vm.locale = null;
+
+	$scope.$on("kendoLocaleChanged", function (event, message) {
+		if (vm.locale != message.locale)
+			buildOptions();
+
+		vm.locale = message.locale;
+	});
 
 	vm.playlistsGridDataSource = new kendo.data.DataSource({
 		data: [
@@ -38,29 +47,6 @@
 		vm.selectedPlaylist = dataItem;
 	};
 
-	vm.playlistsGridOptions = {
-		dataSource: vm.playlistsGridDataSource,
-		sortable: true,
-		pageable: true,
-		filterable: true,
-		selectable: "row",
-		columns: [{
-			field: "abspielzeit",
-			title: "Abspielzeit",
-			width: "60px"
-		}, {
-			field: "type",
-			title: "Type",
-			width: "60px"
-		}, {
-			field: "spotName",
-			title: "Spot Name",
-			width: "120px",
-			filterable: true
-		}]
-	};
-
-
 
 	vm.spotsGridDataSource = new kendo.data.DataSource({
 		data: [
@@ -87,19 +73,49 @@
 		vm.selectedSpot = dataItem;
 	};
 
-	vm.spotsGridOptions = {
-		dataSource: vm.spotsGridDataSource,
-		sortable: true,
-		pageable: true,
-		filterable: true,
-		selectable: "row",
-		columns: [{
-			field: "spotName",
-			title: "Spot Name",
-			width: "100%",
-			filterable: true
-		}]
-	};
+	buildOptions();
+
+	function buildOptions() {
+		$translate(["Spot Name"]).then(function (translations) {
+			vm.spotsGridOptions = {
+				dataSource: vm.spotsGridDataSource,
+				sortable: true,
+				pageable: true,
+				filterable: true,
+				selectable: "row",
+				columns: [{
+					field: "spotName",
+					title: translations["Spot Name"],
+					width: "100%",
+					filterable: true
+				}]
+			};
+		});
+
+		$translate(["Abspielzeit", "Type","Spot Name"]).then(function (translations) {
+			vm.playlistsGridOptions = {
+				dataSource: vm.playlistsGridDataSource,
+				sortable: true,
+				pageable: true,
+				filterable: true,
+				selectable: "row",
+				columns: [{
+					field: "abspielzeit",
+					title: translations["Abspielzeit"],
+					width: "60px"
+				}, {
+					field: "type",
+					title: translations["Type"],
+					width: "60px"
+				}, {
+					field: "spotName",
+					title: translations["Spot Name"],
+					width: "120px",
+					filterable: true
+				}]
+			};
+		});
+	}
 
   }
 })();

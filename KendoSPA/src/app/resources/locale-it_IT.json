@@ -1,10 +1,62 @@
 ﻿{
-	"English": "English",
+	"Englisch": "Englisch",
 	"Deutsch": "Deutsch",
 	"Französisch": "Französisch",
 	"Italienisch": "Italienisch",
 
 	"Alle": "Alle",
 	"Aktive": "Aktive",
-	"Inaktive":  "Inaktive"
+	"Inaktive": "Inaktive",
+
+	"Spotverwaltung": "Spotverwaltung",
+	"Abspielliste": "Abspielliste",
+
+	"Spot Name": "Spot Name",
+	"Sprache": "Sprache",
+	"Start Datum": "Start Datum",
+	"End Datum": "End Datum",
+	"VST Type": "VST Type",
+	"Region": "Region",
+	"Status": "Status",
+
+	"Neu": "Neu",
+	"Aendern": "Aendern",
+	"Kopieren": "Kopieren",
+	"Löschen": "Löschen",
+	"Suchen": "Suchen",
+	"Abspielen": "Abspielen",
+	"Stopp": "Stopp",
+	"Statistik": "Statistik",
+	"Monat": "Monat",
+	"Range": "Range",
+	"Alle daten": "Alle daten",
+	"gewähltes Jahr": "gewähltes Jahr",
+	"gewählter Monat": "gewählter Monat",
+	"gewähltes Datum": "gewähltes Datum",
+	"Jahr": "Jahr",
+	"Monat": "Monat",
+	"Spot name": "Spot name",
+	"Kampagne": "Kampagne",
+	"Kategorie": "Kategorie",
+	"Format": "Format",
+
+	"Aktuell": "Aktuell",
+	"Type": "Type",
+
+	"Start datum": "Start datum",
+	"End datum": "End datum",
+
+
+	"Spot ändern": "Spot ändern",
+	"Neu Spot": "Neu Spot",
+
+	"Abspielzeit": "Abspielzeit",
+	"<nicht definiert>": "<nicht definiert>",
+	"Spot text": "Spot text",
+	"Audofile laden": "Audofile",
+	"Regionen": "Regionen",
+	"Einfügen": "Einfügen",
+	"Speichern": "Speichern",
+	"Abbrechen": "Abbrechen",
+	"Spot thema": "Spot thema"
 }

@@ -1,10 +1,63 @@
 ﻿{
-	"English": "English",
-	"Deutsch": "Deutsch",
-	"Französisch": "Französisch",
-	"Italienisch": "Italienisch",
+	"Englisch": "Englisch_F",
+	"Deutsch": "Deutsch_F",
+	"Französisch": "Französisch_F",
+	"Italienisch": "Italienisch_F",
 
-	"Alle": "Alle",
-	"Aktive": "Aktive",
-	"Inaktive":  "Inaktive"
+	"Alle": "Alle_F",
+	"Aktive": "Aktive_F",
+	"Inaktive": "Inaktive_F",
+
+	"Spotverwaltung": "Spotverwaltung_F",
+	"Abspielliste": "Abspielliste_F",
+
+	"Spot Name": "Spot Name_F",
+	"Sprache": "Sprache_F",
+	"Start Datum": "Start Datum_F",
+	"End Datum": "End Datum_F",
+	"VST Type": "VST Type_F",
+	"Region": "Region_F",
+	"Status": "Status_F",
+
+	"Neu": "Neu_F",
+	"Aendern": "Aendern_F",
+	"Kopieren": "Kopieren_F",
+	"Löschen": "Löschen_F",
+	"Suchen": "Suchen_F",
+	"Abspielen": "Abspielen_F",
+	"Stopp": "Stopp_F",
+	"Statistik": "Statistik_F",
+	"Monat": "Monat_F",
+	"Range": "Range_F",
+	"Alle daten": "Alle daten_F",
+	"gewähltes Jahr": "gewähltes Jahr_F",
+	"gewählter Monat": "gewählter Monat_F",
+	"gewähltes Datum": "gewähltes Datum_F",
+	"Jahr": "Jahr_F",
+	"Monat": "Monat_F",
+	"Spot name": "Spot name_F",
+	"Kampagne": "Kampagne_F",
+	"Kategorie": "Kategorie_F",
+	"Format": "Format_F",
+
+	"Aktuell": "Aktuell_F",
+	"Type": "Type_F",
+
+	"Start datum": "Start datum_F",
+	"End datum": "End datum_F",
+
+	"Spot ändern": "Spot ändern_F",
+	"Neu Spot": "Neu Spot_F",
+
+	"Abspielzeit": "Abspielzeit_F",
+	"<nicht definiert>": "<nicht definiert_F>",
+	"Spot text": "Spot text_F",
+	"Audofile": "Audofile_F",
+	"Regionen": "Regionen_F",
+	"Einfügen": "Einfügen_F",
+	"Speichern": "Speichern_F",
+	"Abbrechen": "Abbrechen_F",
+	"Spot thema": "Spot thema_F"
+
+
 }

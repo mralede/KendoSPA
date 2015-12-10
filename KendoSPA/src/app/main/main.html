@@ -8,28 +8,28 @@
 							<button type="button" class="btn btn-default text-center" ng-click="main.addSpot($event)">
 								<i class="fa fa-file-o"></i>
 								<br>
-								Neu
+								{{"Neu" | translate}}
 							</button>
 							<button type="button" class="btn btn-default text-center" 
 									ng-disabled="!main.spotsGridRowSelected()"  
 									ng-click="main.editSpot($event)">
 								<i class="fa fa-file-text"></i>
 								<br>
-								Aendern
+								{{"Aendern" | translate}}
 							</button>
 							<button type="button" class="btn btn-default text-center" 
 									ng-disabled="!main.spotsGridRowSelected()"
 									ng-click="main.copySpot($event)">
 								<i class="fa fa-files-o"></i>
 								<br>
-								Kopieren
+								{{"Kopieren" | translate}}
 							</button>
 							<button type="button" class="btn btn-default text-center" 
 									ng-disabled="!main.spotsGridRowSelected()"
 									ng-click="main.deleteSpot($event)">
 								<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 								<br>
-								Löschen
+								{{"Löschen" | translate}}
 							</button>
 						</div>
 
@@ -39,7 +39,7 @@
 							<button type="button" class="btn btn-default text-center">
 								<i class="fa fa-search"></i>
 								<br>
-								Suchen
+								{{"Suchen" | translate}}
 							</button>
 						</div>
 
@@ -49,12 +49,12 @@
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-play" aria-hidden="true"></span>
 								<br>
-								Abspielen
+								{{"Abspielen" | translate}}
 							</button>
 							<button type="button" class="btn btn-default text-center" ng-disabled="!main.spotsGridRowSelected()">
 								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
 								<br>
-								Stopp
+								{{"Stopp" | translate}}
 							</button>
 						</div>
 
@@ -64,7 +64,7 @@
 							<button type="button" class="btn btn-default text-center">
 								<i class="fa fa-bar-chart"></i>
 								<br>
-								Statistik
+								{{"Statistik" | translate}}
 							</button>
 						</div>
 					</div>
@@ -75,11 +75,11 @@
 
 		<div class="row">
 			<div class="col-sm-4 dates-filter">
-				<div kendo-tab-strip k-content-urls="[ null, null]" class="dates-filter">
+				<div kendo-tab-strip k-content-urls="[ null, null, null]" class="dates-filter">
 					<ul>
-						<li class="k-state-active">All</li>
-						<li>Month</li>
-						<li>Range</li>
+						<li class="k-state-active">{{"Alle" | translate}}</li>
+						<li>{{"Monat" | translate}}</li>
+						<li>{{"Range" | translate}}</li>
 					</ul>
 
 
@@ -88,25 +88,25 @@
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="0" ng-model="main.spotsFilter.allOption">
-									Alle daten
+									{{"Alle daten" | translate}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="1" ng-model="main.spotsFilter.allOption">
-									gewähltes Jahr
+									{{"gewähltes Jahr" | translate}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="2" ng-model="main.spotsFilter.allOption">
-									gewählter Monat
+									{{"gewählter Monat" | translate}}
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="optionsRadios" value="3" ng-model="main.spotsFilter.allOption">
-									gewähltes Datum
+									{{"gewähltes Datum" | translate}}
 								</label>
 							</div>
 						</div>
@@ -115,7 +115,7 @@
 					<div>
 						<div class="kendo-section k-content">
 							<div class="form-group">
-								<label>Jahr / Monat</label>
+								<label>{{"Jahr" | translate}} / {{"Monat" | translate}}</label>
 								<input kendo-date-picker
 									   k-options="main.monthSelectorOptions"
 									   k-rebind="main.monthSelectorOptions"
@@ -130,14 +130,14 @@
 					<div>
 						<div class="kendo-section k-content">
 							<div class="form-group">
-								<label>Start datum</label>
+								<label>{{"Start datum" | translate}}</label>
 								<input kendo-date-picker
 									k-rebind="main.locale"
 									k-ng-model="main.spotsFilter.dateRange.start"
 									style="width: 100%;" />
 							</div>
 							<div class="form-group">
-								<label>End datum</label>
+								<label>{{"End datum" | translate}}</label>
 								<input kendo-date-picker
 									k-rebind="main.locale"
 									   k-ng-model="main.spotsFilter.dateRange.end"
@@ -153,14 +153,14 @@
 					<div class="panel-body k-content">
 						<div class="row">
 							<div class="form-group  form-group-sm col-xs-12">
-								<label>Spot name</label>
+								<label>{{"Spot name" | translate}}</label>
 								<input type="text" ng-model="main.spotsFilter.gridFilter.spotName" class="form-control" placeholder="Search text">
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="form-group  form-group-sm col-xs-5">
-								<label>Kampagne</label>
+								<label>{{"Kampagne" | translate}}</label>
 								<input type="text" ng-model="main.spotsFilter.gridFilter.campaign" class="form-control" placeholder="Search text">
 							</div>
 
@@ -178,57 +178,62 @@
 
 						<div class="row">
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Status</label>
+								<label>{{"Status" | translate}}</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.statusDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.status"
+										k-value-primitive="true"
 										k-rebind="main.statusDataSource"
 										style="width: 100%"></select>
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Kategorie</label>
+								<label>{{"Kategorie" | translate}}</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.categorieDataSource"
 										k-rebind="main.categorieDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.categorie"
+										k-value-primitive="true"
 										style="width: 100%"></select>
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Sprache</label>
+								<label>{{"Sprache" | translate}}</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.languageDataSource"
 										k-rebind="main.languageDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.language"
+										k-value-primitive="true"
 										style="width: 100%"></select>
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Format</label>
+								<label>{{"Format" | translate}}</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.formatDataSource"
 										k-rebind="main.formatDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.format"
+										k-value-primitive="true"
 										style="width: 100%"></select>
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-2">
-								<label>Region</label>
+								<label>{{"Region" | translate}}</label>
 								<select kendo-drop-down-list
 										k-data-text-field="'name'"
 										k-data-value-field="'id'"
 										k-data-source="main.regionDataSource"
 										k-rebind="main.regionDataSource"
 										k-ng-model="main.spotsFilter.gridFilter.region"
+										k-value-primitive="true"
 										style="width: 100%"></select>
 							</div>
 

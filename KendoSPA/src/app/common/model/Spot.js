@@ -2,11 +2,11 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa.common')
-	  .factory('Spot', factory);
+		.module('kendoSpa.common')
+		.factory('Spot', factory);
 
 	/** @ngInject */
-	function factory() {
+	function factory(kendo) {
 		var Spot = kendo.data.Model.define({
 			fields: {
 				"id": { type: "number" },
@@ -30,8 +30,7 @@
 				"region": { type: "string" },
 
 				"vstType": { type: "string" },
-				"vst": { type: "string" },
-
+				"vst": { type: "string" }
 			},
 			spotName: function () {
 				return this.get("type") + "_" + this.get("language") + "_" + this.get("nameThirdOption") + "_" + this.get("name");

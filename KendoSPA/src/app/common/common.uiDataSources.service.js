@@ -9,10 +9,10 @@
 	function uiDataSourcesService($q, $translate, _) {
 
 		function getHcDataSource() {
-			return $translate(['Alle', 'Aktive', 'Inaktive'])
+			return $translate(['Alle'])
 				.then(function (translations) {
 					return [
-						{ id: 0, name: "Alle" },
+						{ id: 0, name: translations["Alle"] },
 						{ id: 1, name: "HC1" },
 						{ id: 2, name: "HC2" }
 					];
@@ -30,9 +30,9 @@
 		}
 
 		function getCategoriesDataSource() {
-			return $translate(['Alle', 'Aktive', 'Inaktive']).then(function (translations) {
+			return $translate(['Alle']).then(function (translations) {
 				return [
-					{ id: 0, name: "Alle" },
+					{ id: 0, name: translations["Alle"] },
 					{ id: 1, name: "Image" },
 					{ id: 2, name: "National" },
 					{ id: 3, name: "Image & National" },
@@ -61,9 +61,9 @@
 		}
 
 		function getRegioDataSource() {
-			return $translate(['Alle', 'Deutsch', 'Französisch', "Italienisch"]).then(function (translations) {
+			return $translate(['Alle']).then(function (translations) {
 				return [
-					{ id: 0, name: "Alle" },
+					{ id: 0, name: translations["Alle"] },
 					{ id: 1, name: "BE" },
 					{ id: 2, name: "NW" },
 					{ id: 3, name: "ZZ" },
@@ -75,8 +75,9 @@
 		}
 
 		function getFormatDataSource() {
-			return $q.when([
-				{ id: 0, name: "Alle" },
+			return $translate(['Alle']).then(function (translations) {
+				return [
+					{ id: 0, name: translations["Alle"] },
 				{ id: 1, name: "A" },
 				{ id: 2, name: "B" },
 				{ id: 3, name: "C" },
@@ -87,7 +88,8 @@
 				{ id: 8, name: "ProntoB" },
 				{ id: 9, name: "ProntoC" },
 				{ id: 10, name: "ProntoD" }
-			]);
+				];
+			});
 		}
 
 		return {

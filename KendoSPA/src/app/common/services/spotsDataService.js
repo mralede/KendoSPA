@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa.common')
-	  .factory('spotsDataService', spotsDataService);
+		.module('kendoSpa.common')
+		.factory('spotsDataService', spotsDataService);
 
 	/** @ngInject */
 	function spotsDataService(kendo, _, Spot) {
@@ -295,8 +295,7 @@
 					vstType: "WH",
 
 					vst: "Some VST"
-				}),
-
+				})
 			];
 
 			return new kendo.data.ObservableArray(result);

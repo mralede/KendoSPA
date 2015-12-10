@@ -6,7 +6,7 @@
 	  .controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($scope, $timeout, $translate, toastr, _,
+	function MainController($scope, $timeout, $translate, $q, toastr, _,
 							spotsFilterService, uiDataSourcesService, addSpotModalService, editSpotModalService,
 							spotsDataService) {
 		var vm = this;
@@ -89,38 +89,36 @@
 			vm.selectedSpot = dataItem;
 		};
 
-		vm.spotsFilter = spotsFilterService;
-
 		buildOptions();
 
 
 		function buildOptions() {
-			uiDataSourcesService.getHcDataSource().then(function (result) {
+			var hc = uiDataSourcesService.getHcDataSource().then(function (result) {
 				vm.hcDataSource = result;
 			});
 
-			uiDataSourcesService.getStatusDataSource().then(function (result) {
+			var statuses = uiDataSourcesService.getStatusDataSource().then(function (result) {
 				vm.statusDataSource = result;
 			});
 
-			uiDataSourcesService.getCategoriesDataSource().then(function (result) {
+			var categories = uiDataSourcesService.getCategoriesDataSource().then(function (result) {
 				vm.categorieDataSource = result;
 			});
 
-			uiDataSourcesService.getLanguageDataSource().then(function (result) {
+			var languages = uiDataSourcesService.getLanguageDataSource().then(function (result) {
 				vm.languageDataSource = result;
 			});
 
-			uiDataSourcesService.getRegioDataSource().then(function (result) {
+			var regions = uiDataSourcesService.getRegioDataSource().then(function (result) {
 				vm.regionDataSource = result;
 			});
 
-			uiDataSourcesService.getFormatDataSource().then(function (result) {
+			var formats = uiDataSourcesService.getFormatDataSource().then(function (result) {
 				vm.formatDataSource = result;
 			});
 
 
-			$translate(['Alle', 'Aktive', 'Inaktive']).then(function (translations) {
+			$translate(["Spot Name", "Sprache", "Start Datum", "End Datum", "VST Type", "Status"]).then(function (translations) {
 				vm.spotsGridOptions = {
 					dataSource: vm.spotsGridDataSource,
 					sortable: true,
@@ -129,36 +127,36 @@
 					selectable: "row",
 					columns: [{
 						field: "spotName()",
-						title: "Spot Name",
+						title: translations["Spot Name"],
 						width: "120px",
 						filterable: true
 					}, {
 						field: "language",
-						title: "Sprache",
+						title: translations["Sprache"],
 						width: "60px"
 					}, {
 						field: "startDate",
-						title: "Start Datum",
+						title: translations["Start Datum"],
 						type: "date",
 						format: "{0:dd/MM/yyyy}",
 						width: "60px"
 					}, {
 						field: "endDate",
-						title: "End Datum",
+						title: translations["End Datum"],
 						type: "date",
 						format: "{0:dd/MM/yyyy}",
 						width: "60px"
 					}, {
 						field: "vstType",
-						title: "VST Type",
+						title: translations["VST Type"],
 						width: "60px"
 					}, {
 						field: "region",
-						title: "Region",
+						title: translations["Region"],
 						width: "60px"
 					}, {
 						field: "status",
-						title: "Status",
+						title: translations["Status"],
 						width: "60px"
 					}, {
 						field: "hc",
@@ -172,6 +170,10 @@
 				};
 			});
 
+			$q.all(hc, statuses, categories, languages, regions, formats).then(function () {
+				vm.spotsFilter = spotsFilterService;
+
+			});
 		}
 	}
 })();

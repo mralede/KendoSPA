@@ -2,11 +2,11 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa')
-	  .directive('acmeNavbar', acmeNavbar);
+	.module('kendoSpa')
+	.directive('acmeNavbar', acmeNavbar);
 
 	/** @ngInject */
-	function acmeNavbar() {
+	function acmeNavbar($) {
 		var directive = {
 			restrict: 'A',
 			templateUrl: 'app/components/navbar/navbar.html',
