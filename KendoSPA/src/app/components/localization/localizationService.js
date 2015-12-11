@@ -6,7 +6,7 @@
 	.factory('localizationService', localizationService);
 
 	/** @ngInject */
-	function localizationService($translate, LOCALES, $rootScope, tmhDynamicLocale, localStorageService) {
+	function localizationService($translate, LOCALES, $rootScope, kendo, tmhDynamicLocale, localStorageService) {
 		var data = {
 			currentLocale: null //$translate.use() || LOCALES.preferredLocale
 		};

@@ -1,12 +1,13 @@
 ﻿<div class="edit-spot">
 	<div class="modal-header k-header">
 		<h3 class="modal-title">
-			<span ng-if="editMode">{{"Spot ändern" | translate}}</span>
-			<span ng-if="!editMode">{{"Neu Spot" | translate}}</span>
+			<span ng-if="editSpot.editMode">{{"Spot ändern" | translate}}</span>
+			<span ng-if="!editSpot.editMode">{{"Neu Spot" | translate}}</span>
 		</h3>
 	</div>
 
-	<form id="editSpotForm" name="editSpotForm" kendo-validator="validator" k-options="validatorOptions" ng-submit="submit($event)" novalidate>
+	<form id="editSpotForm" name="editSpotForm" kendo-validator="editSpot.validator" k-options="editSpot.validatorOptions" 
+		  ng-submit="editSpot.submit($event)" novalidate>
 		<!--<form name="editSpotForm" ng-submit="submit($event)" novalidate>-->
 		<div class="modal-body">
 			<div class="row">
@@ -21,9 +22,9 @@
 											kendo-drop-down-list
 											k-data-text-field="'name'"
 											k-data-value-field="'id'"
-											k-data-source="typeDataSource"
-											ng-model="spot.type"
-											k-rebind="typeDataSource"
+											k-data-source="editSpot.typeDataSource"
+											ng-model="editSpot.spot.type"
+											k-rebind="editSpot.typeDataSource"
 											style="width: 100%"></select>
 									<!--<div class="form-input-error" ng-show="(editSpotForm.type.$dirty || submitted) && editSpotForm.type.$error.required">
 										Required
@@ -35,23 +36,23 @@
 											kendo-drop-down-list
 											k-data-text-field="'name'"
 											k-data-value-field="'id'"
-											k-data-source="languageDataSource"
-											ng-model="spot.language"
-											k-rebind="languageDataSource"
+											k-data-source="editSpot.languageDataSource"
+											ng-model="editSpot.spot.language"
+											k-rebind="editSpot.languageDataSource"
 											style="width: 100%"></select>
 								</div>
 
 								<div class="col-sm-2">
 									<input name="nameThirdOption" required
 										   type="text"
-										   ng-model="spot.nameThirdOption"
+										   ng-model="editSpot.spot.nameThirdOption"
 										   class="form-control input-sm" placeholder="">
 								</div>
 
 								<div class="col-sm-5">
 									<input name="name" required
 										   type="text"
-										   ng-model="spot.name"
+										   ng-model="editSpot.spot.name"
 										   class="form-control input-sm" placeholder="">
 								</div>
 							</div>
@@ -66,9 +67,9 @@
 											kendo-drop-down-list
 											k-data-text-field="'name'"
 											k-data-value-field="'id'"
-											k-data-source="statusDataSource"
-											ng-model="spot.status"
-											k-rebind="statusDataSource"
+											k-data-source="editSpot.statusDataSource"
+											ng-model="editSpot.spot.status"
+											k-rebind="editSpot.statusDataSource"
 											style="width: 100%"></select>
 								</div>
 							</div>
@@ -82,7 +83,7 @@
 
 							<div>
 								<input type="text"
-									   ng-model="spot.campaign"
+									   ng-model="editSpot.spot.campaign"
 									   class="form-control input-sm" placeholder="">
 							</div>
 						</div>
@@ -92,10 +93,10 @@
 
 							<div>
 								<select name="hc" required
-										options="hcDropDownOptions"
+										options="editSpot.hcDropDownOptions"
 										kendo-drop-down-list
-										ng-model="spot.hc"
-										k-rebind="hcDropDownOptions"
+										ng-model="editSpot.spot.hc"
+										k-rebind="editSpot.hcDropDownOptions"
 										style="width: 100%"></select>
 							</div>
 						</div>
@@ -107,7 +108,7 @@
 
 							<div>
 								<input type="text"
-									   ng-model="spot.theme"
+									   ng-model="editSpot.spot.theme"
 									   class="form-control input-sm" placeholder="">
 							</div>
 						</div>
@@ -119,7 +120,7 @@
 
 							<div>
 								<textarea type="text"
-										  ng-model="spot.text"
+										  ng-model="editSpot.spot.text"
 										  rows="3"
 										  class="form-control input-sm" placeholder=""></textarea>
 							</div>
@@ -133,7 +134,7 @@
 							<div>
 								<input name="startDate" required
 									   kendo-date-picker
-									   k-ng-model="spot.startDate"
+									   k-ng-model="editSpot.spot.startDate"
 									   style="width: 100%;" />
 								<span class="k-invalid-msg" data-for="startDate"></span>
 							</div>
@@ -145,7 +146,7 @@
 							<div>
 								<input name="endDate" required
 									   kendo-date-picker
-									   k-ng-model="spot.endDate"
+									   k-ng-model="editSpot.spot.endDate"
 									   style="width: 100%;" />
 								<span class="k-invalid-msg" data-for="endDate"></span>
 							</div>
@@ -171,7 +172,7 @@
 									<span class="k-invalid-msg" data-for="format"></span>
 								</div>
 
-								<div class="checkbox" ng-repeat="item in formats">
+								<div class="checkbox" ng-repeat="item in editSpot.formats">
 									<label>
 										<input name="format" type="checkbox" ng-value="item.id" ng-model="item.selected">
 										{{item.name}}
@@ -187,7 +188,7 @@
 									<span class="k-invalid-msg" data-for="region"></span>
 								</div>
 
-								<div class="checkbox" ng-repeat="item in regions">
+								<div class="checkbox" ng-repeat="item in editSpot.regions">
 									<label>
 										<input name="region" type="checkbox" ng-value="item.id" ng-model="item.selected">
 										{{item.name}}
@@ -206,7 +207,7 @@
 
 								<div>
 									<textarea type="text"
-											  ng-model="spot.vst"
+											  ng-model="editSpot.spot.vst"
 											  rows="4"
 											  class="form-control input-sm" placeholder=""></textarea>
 								</div>
@@ -226,7 +227,7 @@
 		<div class="modal-footer k-content">
 			<button class="k-button k-primary" style="margin-right: 5px;" type="submit">{{"Speichern" | translate}}</button>
 
-			<button class="k-button btn-warning" type="button" ng-click="cancel()">{{"Abbrechen" | translate}}</button>
+			<button class="k-button btn-warning" type="button" ng-click="editSpot.cancel()">{{"Abbrechen" | translate}}</button>
 		</div>
 	</form>
 </div>

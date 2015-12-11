@@ -2,11 +2,11 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa.common')
-	  .factory('uiDataSourcesService', uiDataSourcesService);
+		.module('kendoSpa.common')
+		.factory('uiDataSourcesService', uiDataSourcesService);
 
 	/** @ngInject */
-	function uiDataSourcesService($q, $translate, _) {
+	function uiDataSourcesService($q, $translate) {
 
 		function getHcDataSource() {
 			return $translate(['Alle'])

@@ -1,4 +1,5 @@
-﻿(function() {
+﻿/* global moment:false, kendo:false, $:false, _:false */
+(function () {
 	'use strict';
 
 	angular
@@ -7,5 +8,4 @@
 	.constant('kendo', kendo)
 	.constant('$', $)
 	.constant('_', _);
-
 })();

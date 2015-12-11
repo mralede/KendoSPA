@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa.common')
-	  .factory('localStorageService', localStorageService);
+		.module('kendoSpa.common')
+		.factory('localStorageService', localStorageService);
 
 	/** @ngInject */
 	function localStorageService($window) {

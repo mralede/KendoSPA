@@ -6,7 +6,7 @@
 	.directive('acmeNavbar', acmeNavbar);
 
 	/** @ngInject */
-	function acmeNavbar($) {
+	function acmeNavbar() {
 		var directive = {
 			restrict: 'A',
 			templateUrl: 'app/components/navbar/navbar.html',
@@ -19,14 +19,14 @@
 
 			transclude: true,
 			link: function (scope, element, attrs) {
-				$("#menu-toggle-left").click(function (e) {
+				angular.element("#menu-toggle-left").click(function (e) {
 					e.preventDefault();
-					$("#wrapper").toggleClass("active-left");
+					angular.element("#wrapper").toggleClass("active-left");
 				});
 
-				$("#menu-toggle-right").click(function (e) {
+				angular.element("#menu-toggle-right").click(function (e) {
 					e.preventDefault();
-					$("#wrapper").toggleClass("active-right");
+					angular.element("#wrapper").toggleClass("active-right");
 				});
 			}
 		};
@@ -34,7 +34,7 @@
 		return directive;
 
 		/** @ngInject */
-		function NavbarController(moment, Fullscreen, themeChooserService, LOCALES, localizationService) {
+		function NavbarController(Fullscreen, themeChooserService, LOCALES, localizationService) {
 			var vm = this;
 
 			vm.toggleFullscreen = function () {
@@ -61,10 +61,6 @@
 				vm.selectedTheme = theme;
 				themeChooserService.setTheme(theme, true);
 			};
-
-
-			// "vm.creation" is avaible by directive option "bindToController: true"
-			vm.relativeDate = moment(vm.creationDate).fromNow();
 		}
 	}
 

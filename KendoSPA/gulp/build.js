@@ -95,7 +95,7 @@ gulp.task('kendo-messages', function () {
 });
 
 gulp.task('kendo-resources', function () {
-	return gulp.src(conf.paths.src + '/app/resources/**/*.*')
+	return gulp.src(conf.paths.src + '/resources/**/*.*')
 	  .pipe(gulp.dest(path.join(conf.paths.dist, '/resources')));
 });
 

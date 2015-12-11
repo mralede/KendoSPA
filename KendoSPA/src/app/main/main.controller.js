@@ -2,16 +2,18 @@
 	'use strict';
 
 	angular
-	  .module('kendoSpa')
-	  .controller('MainController', MainController);
+		.module('kendoSpa')
+		.controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($scope, $timeout, $translate, $q, toastr, _,
-							spotsFilterService, uiDataSourcesService, addSpotModalService, editSpotModalService,
+	function MainController($scope, $timeout, $translate, $q, toastr, _, kendo,
+							spotsFilterService, uiDataSourcesService, editSpotModalService,
 							spotsDataService) {
 		var vm = this;
 
 		vm.addSpot = function ($event) {
+			$event.preventDefault();
+
 			editSpotModalService
 				.open()
 				.then(function (spot) {
@@ -20,10 +22,11 @@
 		};
 
 		vm.editSpot = function ($event) {
+			$event.preventDefault();
+
 			editSpotModalService
 				.open(vm.selectedSpot.getData())
 				.then(function (spot) {
-					console.log(spot);
 					spotsDataService.updateSpot(spot);
 
 					vm.selectedSpot = null;
@@ -31,6 +34,8 @@
 		};
 
 		vm.copySpot = function ($event) {
+			$event.preventDefault();
+
 			var spot = vm.selectedSpot.clone();
 			spotsDataService.addSpot(spot);
 
@@ -38,6 +43,8 @@
 		};
 
 		vm.deleteSpot = function ($event) {
+			$event.preventDefault();
+
 			spotsDataService.deleteSpot(vm.selectedSpot.get("id"));
 
 			vm.selectedSpot = null;
@@ -55,7 +62,7 @@
 		});
 
 		function onDateChange() {
-		};
+		}
 
 		vm.monthSelectorOptions = {
 			start: "year",
@@ -85,7 +92,7 @@
 			return !!vm.selectedSpot;
 		};
 
-		vm.spotsGridChanged = function (data, dataItem, columns) {
+		vm.spotsGridChanged = function (data, dataItem/*, columns*/) {
 			vm.selectedSpot = dataItem;
 		};
 

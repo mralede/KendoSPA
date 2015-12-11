@@ -14,7 +14,7 @@
 			var modalInstance = $uibModal.open({
 				animation: true,
 				templateUrl: 'app/main/editSpot.html',
-				controller: 'EditSpotModalController',
+				controller: 'EditSpotModalController as editSpot',
 				size: "lg",
 				resolve: {
 					spot: function () {
@@ -32,17 +32,17 @@
 	}
 
 	/** @ngInject */
-	function EditSpotModalController($scope, $uibModalInstance, $translate, Spot, spot, uiDataSourcesService) {
-		//$scope.spot = spot;
+	function EditSpotModalController(_, $uibModalInstance, $translate, Spot, spot, uiDataSourcesService) {
+		var vm = this;
 
 		if (spot) {
-			$scope.editMode = true;
+			vm.editMode = true;
 
-			$scope.spot = angular.copy(spot);
+			vm.spot = angular.copy(spot);
 		} else {
-			$scope.editMode = false;
+			vm.editMode = false;
 
-			$scope.spot = new Spot({
+			vm.spot = new Spot({
 				type: null,
 				language: null,
 				nameThirdOption: null,
@@ -67,30 +67,30 @@
 			});
 		}
 
-		$scope.typeDataSource = [
+		vm.typeDataSource = [
 				{ id: "P_EX", name: "P_EX" },
 				{ id: "N_CH", name: "N_CH" },
 				{ id: "N_BH", name: "N_BH" }
 		]
 
-		$scope.languageDataSource = [
+		vm.languageDataSource = [
 			{ id: "D", name: "_D_" },
 			{ id: "F", name: "_F_" },
 			{ id: "I", name: "_I_" }
 		]
 
 
-		$scope.validatorOptions = {
+		vm.validatorOptions = {
 			rules: {
 				regions: function (input) {
 					if (input.is("[name=region]")) {
-						return $("#editSpotForm").find("[name=region]").is(":checked");
+						return angular.element("#editSpotForm").find("[name=region]").is(":checked");
 					}
 					return true;
 				},
 				formats: function (input) {
 					if (input.is("[name=format]")) {
-						return $("#editSpotForm").find("[name=format]").is(":checked");
+						return angular.element("#editSpotForm").find("[name=format]").is(":checked");
 					}
 					return true;
 				}
@@ -102,9 +102,9 @@
 			}
 		};
 
-		$scope.submitted = false;
+		vm.submitted = false;
 
-		$scope.submit = function (event) {
+		vm.submit = function (event) {
 			event.preventDefault();
 
 			//$scope.submitted = true;
@@ -116,24 +116,24 @@
 			//	$uibModalInstance.close($scope.spot);
 			//}
 
-			if ($scope.validator.validate()) {
-				$scope.spot.format = getSelected($scope.formats);
-				$scope.spot.region = getSelected($scope.regions);
+			if (vm.validator.validate()) {
+				vm.spot.format = getSelected(vm.formats);
+				vm.spot.region = getSelected(vm.regions);
 
-				$uibModalInstance.close($scope.spot);
+				$uibModalInstance.close(vm.spot);
 			}
 		};
 
-		$scope.cancel = function () {
+		vm.cancel = function () {
 			$uibModalInstance.dismiss('cancel');
 		};
 
 
-		buildOptions($scope.spot);
+		buildOptions(vm.spot);
 
 		function buildOptions(spot) {
 			uiDataSourcesService.getStatusDataSource().then(function (result) {
-				$scope.statusDataSource = _(result).chain()
+				vm.statusDataSource = _(result).chain()
 													.filter(function (x) {
 														return x.id;
 													})
@@ -143,7 +143,7 @@
 			uiDataSourcesService.getFormatDataSource().then(function (result) {
 				var selectedFormats = (spot.format || "").split(";");
 
-				$scope.formats = _(result).chain()
+				vm.formats = _(result).chain()
 											.filter(function (x) {
 												return x.id;
 											})
@@ -158,7 +158,7 @@
 			uiDataSourcesService.getRegioDataSource().then(function (result) {
 				var selectedRegions = (spot.region || "").split(";");
 
-				$scope.regions = _(result).chain()
+				vm.regions = _(result).chain()
 											.filter(function (x) {
 												return x.id;
 											})
@@ -167,26 +167,26 @@
 													return item.name == region;
 												});
 											})
-											.value();;
+											.value();
 			});
 
 			uiDataSourcesService.getHcDataSource().then(function (result) {
-				$scope.hcDataSource = _(result).chain()
+				vm.hcDataSource = _(result).chain()
 												.filter(function (x) {
 													return x.id;
 												})
 												.value();
 
 				$translate(["<nicht definiert>"]).then(function (translations) {
-					$scope.hcDropDownOptions = {
-						dataSource: $scope.hcDataSource,
+					vm.hcDropDownOptions = {
+						dataSource: vm.hcDataSource,
 						dataTextField:"name",
 						dataValueField:"id",
 						optionLabel: translations["<nicht definiert>"]
 					};
 				});
 			});
-		};
+		}
 
 		function getSelected(arr) {
 			var selected = _(arr)
@@ -200,7 +200,7 @@
 				.value();
 
 			return selected.join(";");
-		};
+		}
 	}
 
 })();
