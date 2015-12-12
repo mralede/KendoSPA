@@ -83,7 +83,7 @@
 					}
 				}
 			},
-			pageSize: 8
+			pageSize: 20
 		});
 
 		vm.selectedSpot = null;

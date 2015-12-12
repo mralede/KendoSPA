@@ -1,11 +1,15 @@
 ﻿.ui-view-container {
 	position: relative;
 
-	[ui-view].ng-enter, [ui-view].ng-leave {
-		/*position: absolute;
-		right: 0;
-		left: 0;*/
+	[ui-view]{
+		position:absolute;
+		top:0;
+		bottom:0;
+		right:0;
+		left:0;
+	}
 
+	[ui-view].ng-enter, [ui-view].ng-leave {
 		-moz-transition: all 0.5s ease-in-out;
 		-o-transition: all 0.5s ease-in-out;
 		-webkit-transition: all 0.5s ease-in-out;
