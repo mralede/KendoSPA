@@ -3,42 +3,57 @@
 
 	angular
 	.module('kendoSpa.common')
-	.directive('fullHeight', fullHeight);
+	.directive('fullHeight', fullHeight)
+	.directive('fullHeightContainer', fullHeightContainer);
+
+	/** @ngInject */
+	function fullHeightContainer() {
+		var directive = {
+			restrict: 'A',
+			scope: {
+			},
+			controller: ["$scope", "$element", "$window", function ($scope, $element, $window) {
+				this.getHeight = function () {
+					if (!$scope.height) {
+						$scope.height = this.calculateHeight();
+					}
+					
+					return $scope.height;
+				};
+
+				this.calculateHeight = function () {
+					var win = angular.element($window);
+
+					return Math.max(win.height(), win.innerHeight()) - Math.max($element.height(), $element.innerHeight());
+				};
+			}]
+		};
+
+		return directive;
+	}
 
 	/** @ngInject */
 	function fullHeight($window, $) {
 		var directive = {
 			restrict: 'A',
+			require: "^^fullHeightContainer",
 			scope: {
-				fullHeightContainer: '@',
 				fullHeightDelta: '=',
-				minHeight: '=',
-				fullHeightTarget: '@'
+				minHeight: '='
 			},
-			link: function (scope, element, attrs) {
+			link: function (scope, element, attrs, fullHeightContainerCtrl) {
 				var delta = scope.fullHeightDelta || 0,
 					minHeight = scope.minHeight || 200;
 
-				var win = angular.element($window),
-					viewportHeight = win.height();
-
-				var container = angular.element(scope.fullHeightContainer),
-					containerHeight = container.height();
-
-				var newHeight = viewportHeight - containerHeight - delta;
+				var newHeight = fullHeightContainerCtrl.getHeight() - delta;
 
 				if (newHeight < minHeight)
 					newHeight = minHeight;
 
 				element.css('height', newHeight);
-
-				var target = scope.fullHeightTarget ? angular.element(scope.fullHeightTarget) : null;
-				if (target)
-					target.css('height', newHeight);
 			}
 		};
 
 		return directive;
-
 	}
 })();
