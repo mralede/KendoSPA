@@ -6,7 +6,7 @@
 	.factory('localizationService', localizationService);
 
 	/** @ngInject */
-	function localizationService($translate, LOCALES, $rootScope, kendo, tmhDynamicLocale, localStorageService) {
+	function localizationService($q, $translate, LOCALES, $rootScope, kendo, tmhDynamicLocale, localStorageService) {
 		var data = {
 			currentLocale: null //$translate.use() || LOCALES.preferredLocale
 		};
@@ -16,13 +16,15 @@
 		}
 
 		function setLocale (locale) {
-			data.currentLocale = locale;
+			//data.currentLocale = locale;
 
 			localStorageService.set("LOCALE", locale);
 
 			$translate.use(locale);
 
-			loadKendoLocale(locale);
+			data.currentLocale = loadKendoLocale(locale);
+
+			return data.currentLocale;
 		}
 
 		function getLocale() {
@@ -39,17 +41,24 @@
 		});
 
 		function loadKendoLocale(locale) {
-			var kendoLocale = toKendoLocale(locale);
+			var deferred = $q.defer(),
+				kendoLocale = toKendoLocale(locale);
 
-			$.getScript("kendo-messages/kendo.messages." + kendoLocale + ".min.js", function () {
-				$rootScope.$apply(function () {
+			$.getScript("kendo-messages/kendo.messages." + kendoLocale + ".min.js")
+				.done(function () {
 					kendo.culture(kendoLocale); /* change kendo culture */
 
 					$rootScope.$broadcast("kendoLocaleChanged", {
 						locale: kendoLocale
 					});
+
+					deferred.resolve(locale);
 				})
-			})
+				.fail(function () {
+					deferred.resolve(locale);
+				});
+
+			return deferred.promise;
 		}
 
 		setLocale(localStorageService.get("LOCALE") || LOCALES.preferredLocale);

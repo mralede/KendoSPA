@@ -6,7 +6,7 @@
 		.controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($scope, $timeout, $translate, $q, toastr, _, kendo,
+	function MainController($scope, $timeout, $translate, $q, toastr, _, kendo, locale,
 							spotsFilterService, uiDataSourcesService, editSpotModalService,
 							spotsDataService) {
 		var vm = this;
@@ -50,7 +50,7 @@
 			vm.selectedSpot = null;
 		};
 
-		vm.locale = null;
+		vm.locale = locale;
 
 		$scope.$on("kendoLocaleChanged", function (event, message) {
 			vm.monthSelectorOptions.culture = message.locale;
@@ -96,10 +96,15 @@
 			vm.selectedSpot = dataItem;
 		};
 
+
 		buildOptions();
 
 
 		function buildOptions() {
+			$translate(["Spot Name", "Sprache", "Start Datum", "End Datum", "VST Type", "Status"]).then(function (translations) {
+				buildGridOptions(translations);
+			});
+
 			var hc = uiDataSourcesService.getHcDataSource().then(function (result) {
 				vm.hcDataSource = result;
 			});
@@ -125,62 +130,61 @@
 			});
 
 
-			$translate(["Spot Name", "Sprache", "Start Datum", "End Datum", "VST Type", "Status"]).then(function (translations) {
-				vm.spotsGridOptions = {
-					dataSource: vm.spotsGridDataSource,
-					sortable: true,
-					pageable: true,
-					filterable: true,
-					selectable: "row",
-					columns: [{
-						field: "spotName()",
-						title: translations["Spot Name"],
-						width: "120px",
-						filterable: true
-					}, {
-						field: "language",
-						title: translations["Sprache"],
-						width: "60px"
-					}, {
-						field: "startDate",
-						title: translations["Start Datum"],
-						type: "date",
-						format: "{0:dd/MM/yyyy}",
-						width: "60px"
-					}, {
-						field: "endDate",
-						title: translations["End Datum"],
-						type: "date",
-						format: "{0:dd/MM/yyyy}",
-						width: "60px"
-					}, {
-						field: "vstType",
-						title: translations["VST Type"],
-						width: "60px"
-					}, {
-						field: "region",
-						title: translations["Region"],
-						width: "60px"
-					}, {
-						field: "status",
-						title: translations["Status"],
-						width: "60px"
-					}, {
-						field: "hc",
-						title: "HC",
-						width: "60px"
-					}, {
-						field: "vst",
-						title: "VST",
-						width: "60px"
-					}]
-				};
-			});
-
 			$q.all(hc, statuses, categories, languages, regions, formats).then(function () {
 				vm.spotsFilter = spotsFilterService;
-
 			});
+		}
+
+		function buildGridOptions(translations) {
+			vm.spotsGridOptions = {
+				dataSource: vm.spotsGridDataSource,
+				sortable: true,
+				pageable: true,
+				filterable: true,
+				selectable: "row",
+				columns: [{
+					field: "spotName()",
+					title: translations["Spot Name"],
+					width: "120px",
+					filterable: true
+				}, {
+					field: "language",
+					title: translations["Sprache"],
+					width: "60px"
+				}, {
+					field: "startDate",
+					title: translations["Start Datum"],
+					type: "date",
+					format: "{0:dd/MM/yyyy}",
+					width: "60px"
+				}, {
+					field: "endDate",
+					title: translations["End Datum"],
+					type: "date",
+					format: "{0:dd/MM/yyyy}",
+					width: "60px"
+				}, {
+					field: "vstType",
+					title: translations["VST Type"],
+					width: "60px"
+				}, {
+					field: "region",
+					title: translations["Region"],
+					width: "60px"
+				}, {
+					field: "status",
+					title: translations["Status"],
+					width: "60px"
+				}, {
+					field: "hc",
+					title: "HC",
+					width: "60px"
+				}, {
+					field: "vst",
+					title: "VST",
+					width: "60px"
+				}]
+			};
 		}
 	}
 })();

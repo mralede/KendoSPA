@@ -12,13 +12,23 @@
 			url: '/',
 			templateUrl: 'app/main/main.html',
 			controller: 'MainController',
-			controllerAs: 'main'
+			controllerAs: 'main',
+			resolve: {
+				locale: ["localizationService", function (localizationService) {
+					return localizationService.getLocale();
+				}]
+			}
 		})
 		.state('playlists', {
 			url: '/playlists',
 			templateUrl: 'app/playlists/playlists.html',
 			controller: 'PlaylistsController',
-			controllerAs: 'playlists'
+			controllerAs: 'playlists',
+			resolve: {
+				locale: ["localizationService", function (localizationService) {
+					return localizationService.getLocale();
+				}]
+			}
 		});
 
 		$urlRouterProvider.otherwise('/');

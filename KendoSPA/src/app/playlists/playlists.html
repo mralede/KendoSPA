@@ -73,7 +73,7 @@
 			<div class="col-sm-6">
 				<div class="panel app-panel last">
 					<div class="panel-heading k-header">Abspielliste (Playlist) {{ playlists.filter.date | date:"dd.MM.yyyy" }} (KW 40)</div>
-					<div class="panel-body k-content" full-height full-height-delta="65">
+					<div class="panel-body k-content" full-height full-height-delta="60">
 						<kendo-grid options="playlists.playlistsGridOptions"
 									k-rebind="playlists.playlistsGridOptions"
 									k-on-change="playlists.playlistsGridChanged(data, dataItem, columns)" class="grid-full-height">
@@ -86,7 +86,7 @@
 			<div class="col-sm-6">
 				<div class="panel app-panel last">
 					<div class="panel-heading k-header">Nationale und regionale Spots, Image Spots: (Kein Spot selektiert)</div>
-					<div class="panel-body k-content" full-height full-height-delta="65">
+					<div class="panel-body k-content" full-height full-height-delta="60">
 						<kendo-grid options="playlists.spotsGridOptions"
 									k-rebind="playlists.spotsGridOptions"
 									k-on-change="playlists.spotsGridChanged(data, dataItem, columns)" class="grid-full-height">

@@ -6,10 +6,10 @@
 	.controller('PlaylistsController', PlaylistsController);
 
   /** @ngInject */
-  function PlaylistsController($scope, $timeout, $translate, kendo) {
+  function PlaylistsController($scope, $timeout, $translate, kendo, locale) {
 	var vm = this;
 
-	vm.locale = null;
+	vm.locale = locale;
 
 	$scope.$on("kendoLocaleChanged", function (event, message) {
 		if (vm.locale != message.locale)

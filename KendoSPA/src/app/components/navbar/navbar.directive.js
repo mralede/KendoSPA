@@ -45,7 +45,12 @@
 			};
 
 			vm.locales = LOCALES.locales;
-			vm.currentLocale = localizationService.getLocale();
+
+			localizationService
+				.getLocale()
+				.then(function (locale) {
+					vm.currentLocale = locale;
+				});
 
 			vm.changeLocale = function (locale) {
 				localizationService.setLocale(locale);

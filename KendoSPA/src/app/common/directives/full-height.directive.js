@@ -33,7 +33,7 @@
 	}
 
 	/** @ngInject */
-	function fullHeight($window, $) {
+	function fullHeight($window) {
 		var directive = {
 			restrict: 'A',
 			require: "^^fullHeightContainer",
