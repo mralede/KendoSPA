@@ -1,0 +1,23 @@
+﻿<div class="container log-in">
+	<div class="card card-container">
+		<!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+		<img class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+		<p class="profile-name-card"></p>
+
+		<form class="form-signin" name="logIn.signIn" ng-submit="logIn.submit()" novalidate  ng-class="{'submitted': submitted}">
+			<span class="reauth-email"></span>
+			<input type="text" name="login" ng-model="logIn.user.name" class="form-control" placeholder="User name" required autofocus>
+			<input type="password" name="password" ng-model="logIn.user.password"  class="form-control" placeholder="Password" required>
+			<div id="remember" class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="logIn.user.remember"> Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+		</form><!-- /form -->
+
+		<a href="#" class="forgot-password">
+			Forgot the password?
+		</a>
+	</div><!-- /card-container -->
+</div><!-- /container -->

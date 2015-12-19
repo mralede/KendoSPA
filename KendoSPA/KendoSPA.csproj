@@ -67,6 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="src\app\authentication\logIn.controller.js" />
+    <Content Include="src\app\common\authentication.service.js" />
+    <Content Include="src\app\authentication\logIn.html" />
     <Content Include="src\app\common\common.constants.js" />
     <Content Include="src\app\common\common.localStorage.service.js" />
     <Content Include="src\app\common\common.module.js" />
@@ -80,6 +83,7 @@
     <Content Include="src\app\components\navbar\busy-indicator.less" />
     <Content Include="src\app\bootstrap-addons.less" />
     <Content Include="src\app\common\directives\full-height.less" />
+    <Content Include="src\app\authentication\logIn.less" />
     <None Include="src\app\components\navbar\sidebars.less" />
     <Content Include="src\app\index.less" />
     <Content Include="gulp\.eslintrc" />
@@ -146,6 +150,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

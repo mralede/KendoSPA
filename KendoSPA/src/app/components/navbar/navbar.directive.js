@@ -34,8 +34,19 @@
 		return directive;
 
 		/** @ngInject */
-		function NavbarController(Fullscreen, themeChooserService, LOCALES, localizationService) {
+		function NavbarController($scope, $state, Fullscreen, themeChooserService, LOCALES, localizationService, authenticationService) {
 			var vm = this;
+
+			$scope.$watch(authenticationService.isAuthenticated, function (isAuthenticated) {
+				vm.isAuthenticated = isAuthenticated;
+
+				vm.userName = authenticationService.getUserName();
+			});
+
+			vm.logOut = function () {
+				authenticationService.logOut();
+				$state.go('signIn')
+			};
 
 			vm.toggleFullscreen = function () {
 				if (Fullscreen.isEnabled())
