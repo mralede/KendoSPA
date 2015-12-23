@@ -30,7 +30,8 @@
 
 #sidebar-wrapper-left {
 	margin-left: -200px;
-	left: 200px;
+	left: 0;
+
 	width: 200px;
 	background: #222;
 
@@ -43,11 +44,15 @@
 	-o-transition: all 0.4s ease 0s;
 	-webkit-transition: all 0.4s ease 0s;
 	transition: all 0.4s ease 0s;
+
+	&.active{
+		left: 200px;
+	}
 }
 
 #sidebar-wrapper-right {
 	margin-right: -200px;
-	right: 200px;
+	right: 0;
 	width: 200px;
 	background: #222;
 
@@ -60,9 +65,13 @@
 	-o-transition: all 0.4s ease 0s;
 	-webkit-transition: all 0.4s ease 0s;
 	transition: all 0.4s ease 0s;
+
+	&.active{
+		right: 200px;
+	}
 }
 
-#wrapper.active-left {
+/*#wrapper.active-left {
 	padding-left: 0;
 }
 
@@ -76,7 +85,7 @@
 
 #wrapper.active-right #sidebar-wrapper-right {
 	right: 0;
-}
+}*/
 
 
 #page-content-wrapper {

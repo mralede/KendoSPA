@@ -36,8 +36,8 @@
 				authenticationService.logOut();
 				$state.go('signIn');
 
-				vm.activeLeft = true;
-				vm.activeRight = true;
+				vm.activeLeft = false;
+				vm.activeRight = false;
 			};
 
 			vm.toggleFullscreen = function () {
@@ -70,12 +70,12 @@
 				themeChooserService.setTheme(theme, true);
 			};
 
-			vm.activeLeft = true;
+			vm.activeLeft = false;
 			vm.toggleLeft = function () {
 				vm.activeLeft = !vm.activeLeft;
 			};
 
-			vm.activeRight = true;
+			vm.activeRight = false;
 			vm.toggleRight = function () {
 				vm.activeRight = !vm.activeRight;
 			};
