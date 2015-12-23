@@ -9,7 +9,8 @@
 
 	<div class="container-fluid">
 		<div class="collapse navbar-collapse" id="bs-navbar-collapse">
-			<button type="button" id="menu-toggle-left" class="navbar-toggle visible navbar-btn navbar-left" ng-show="navbar.isAuthenticated">
+			<button type="button" id="menu-toggle-left" class="navbar-toggle visible navbar-btn navbar-left" 
+					ng-click="navbar.toggleLeft()" ng-if="navbar.isAuthenticated">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -45,7 +46,9 @@
 				<a class="navbar-brand left-space" href>DIGIMEDIA</a>
 				<p class="navbar-text">professional</p>
 
-				<button id="menu-toggle-right" type="button" class="navbar-toggle visible navbar-btn" ng-show="navbar.isAuthenticated">
+				<button id="menu-toggle-right" type="button" class="navbar-toggle visible navbar-btn"
+						ng-click="navbar.toggleRight()" 
+						ng-if="navbar.isAuthenticated">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -56,7 +59,7 @@
 	</div>
 </nav>
 
-<div id="wrapper" class="active-right active-left">
+<div id="wrapper" ng-class="{'active-left': navbar.activeLeft, 'active-right': navbar.activeRight}">
 	<!-- Sidebar -->
 	<div id="sidebar-wrapper-left" ng-if="navbar.isAuthenticated" >
 		<nav>

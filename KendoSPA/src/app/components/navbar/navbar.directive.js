@@ -17,18 +17,7 @@
 			controllerAs: 'navbar',
 			bindToController: true,
 
-			transclude: true,
-			link: function (scope, element, attrs) {
-				angular.element("#menu-toggle-left").click(function (e) {
-					e.preventDefault();
-					angular.element("#wrapper").toggleClass("active-left");
-				});
-
-				angular.element("#menu-toggle-right").click(function (e) {
-					e.preventDefault();
-					angular.element("#wrapper").toggleClass("active-right");
-				});
-			}
+			transclude: true
 		};
 
 		return directive;
@@ -45,7 +34,10 @@
 
 			vm.logOut = function () {
 				authenticationService.logOut();
-				$state.go('signIn')
+				$state.go('signIn');
+
+				vm.activeLeft = true;
+				vm.activeRight = true;
 			};
 
 			vm.toggleFullscreen = function () {
@@ -76,6 +68,16 @@
 			vm.setTheme = function (theme) {
 				vm.selectedTheme = theme;
 				themeChooserService.setTheme(theme, true);
+			};
+
+			vm.activeLeft = true;
+			vm.toggleLeft = function () {
+				vm.activeLeft = !vm.activeLeft;
+			};
+
+			vm.activeRight = true;
+			vm.toggleRight = function () {
+				vm.activeRight = !vm.activeRight;
 			};
 		}
 	}
