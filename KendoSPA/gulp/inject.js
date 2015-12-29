@@ -25,7 +25,12 @@ gulp.task('copy-kendo-messages', function () {
 	  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/kendo-messages')));
 });
 
-gulp.task('inject', ['scripts', 'styles', 'copy-resources', 'copy-kendo-messages'], function () {
+gulp.task('copy-angular-i18n', function () {
+	return gulp.src(conf.wiredep.directory + '/angular-i18n//angular-locale_{de-de,en-us,fr-fr,it-it}.js')
+	  .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/angular-i18n')));
+});
+
+gulp.task('inject', ['scripts', 'styles', 'copy-resources', 'copy-kendo-messages', 'copy-angular-i18n'], function () {
   var injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.css'),
     path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')

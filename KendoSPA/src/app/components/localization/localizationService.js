@@ -37,7 +37,7 @@
 			document.documentElement.setAttribute('lang', data.language);// sets "lang" attribute to html
 
 			//// asking angular-dynamic-locale to load and apply proper AngularJS $locale setting
-			//tmhDynamicLocale.set(data.language.toLowerCase().replace(/_/g, '-'));
+			tmhDynamicLocale.set(data.language.toLowerCase().replace(/_/g, '-'));
 		});
 
 		function loadKendoLocale(locale) {

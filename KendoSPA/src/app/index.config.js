@@ -21,7 +21,7 @@
 	$translateProvider.preferredLanguage('de_DE');// is applied on first load
 	$translateProvider.useLocalStorage();// saves selected language to localStorage
 
-	tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
+	tmhDynamicLocaleProvider.localeLocationPattern('angular-i18n/angular-locale_{{locale}}.js');
 
 	// Set options third-party lib
 	toastrConfig.allowHtml = true;

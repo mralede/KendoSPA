@@ -89,6 +89,11 @@ gulp.task('copy-kendo-images', function () {
 		.pipe(gulp.dest(path.join(conf.paths.dist, '/styles/')));
 });
 
+gulp.task('angular-i18n', function () {
+	return gulp.src(conf.wiredep.directory + '/angular-i18n//angular-locale_{de-de,en-us,fr-fr,it-it}.js')
+	  .pipe(gulp.dest(path.join(conf.paths.dist, '/angular-i18n')));
+});
+
 gulp.task('kendo-messages', function () {
 	return gulp.src(conf.wiredep.directory + '/kendo-ui/js/messages/kendo.messages.{de-DE,fr-FR,it-IT,en-US}.min.js')
 	  .pipe(gulp.dest(path.join(conf.paths.dist, '/kendo-messages')));
@@ -104,9 +109,10 @@ gulp.task('copy-kendo-fonts', function () {
 	  .pipe(gulp.dest(path.join(conf.paths.dist, '/styles/fonts/')));
 });
 
+
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
-gulp.task('fonts', ['copy-fa-fonts', 'copy-kendo-images', 'copy-kendo-fonts', 'kendo-messages', 'kendo-resources'], function () {
+gulp.task('fonts', ['copy-fa-fonts', 'copy-kendo-images', 'copy-kendo-fonts', 'kendo-messages', 'kendo-resources', 'angular-i18n'], function () {
   return gulp.src($.mainBowerFiles())
     .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
     .pipe($.flatten())
