@@ -156,10 +156,24 @@
 					</div>
 
 					<div class="row condensed-grid edit-spot-form  k-content">
-						<div class="form-group col-sm-12">
+						<div class="form-group col-sm-2">
 							<div class="upload-button-container">
-								<button class="k-button pull-left" type="button">{{"Audofile laden" | translate}}...</button>
+								<button class="k-button pull-left" type="button" ngf-select="editSpot.filesList.addFiles($files)" ngf-multiple="true">
+									{{"Audofile laden" | translate}}...
+								</button>
 							</div>
+						</div>
+						<div class="form-group col-sm-10">
+							<ul class="list-unstyled drop-box" ngf-drop="editSpot.filesList.addFiles($files)" ngf-drag-over-class="'dragover'" ngf-multiple="true">
+								<li ng-repeat="f in editSpot.filesList.files"
+									class="file">
+									{{f.name}} {{f.$error}} {{f.$errorParam}}
+
+									<a class="delete-file" href ng-click=" editSpot.filesList.deleteFile(f)">
+										<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>
 

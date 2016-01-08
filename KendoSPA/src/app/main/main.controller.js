@@ -6,10 +6,22 @@
 		.controller('MainController', MainController);
 
 	/** @ngInject */
-	function MainController($scope, $timeout, $translate, $q, toastr, _, kendo, locale,
+	function MainController($scope, $timeout, $translate, $q, $uibModalStack, toastr, _, kendo, locale,
 							spotsFilterService, uiDataSourcesService, editSpotModalService,
 							spotsDataService) {
 		var vm = this;
+
+		vm.dropDisabled = function () {
+			!!$uibModalStack.getTop();
+		};
+
+		vm.addFiles = function ($files) {
+			editSpotModalService
+				.open(null, $files)
+				.then(function (spot) {
+					spotsDataService.addSpot(spot);
+				});
+		};
 
 		vm.addSpot = function ($event) {
 			$event.preventDefault();

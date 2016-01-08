@@ -2,13 +2,16 @@
   'use strict';
 
   angular
-    .module('kendoSpa')
-    .run(runBlock);
+	.module('kendoSpa')
+	.run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
+  function runBlock($document) {
 
-    $log.debug('runBlock end');
+	$document.bind("drop dragover", function (e) {
+		e.preventDefault();
+		return false;
+	});
   }
 
 })();

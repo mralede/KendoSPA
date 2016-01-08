@@ -9,7 +9,7 @@
 	/** @ngInject */
 	function editSpotModalService($uibModal) {
 
-		function open(spot) {
+		function open(spot, files) {
 
 			var modalInstance = $uibModal.open({
 				animation: true,
@@ -19,6 +19,9 @@
 				resolve: {
 					spot: function () {
 						return spot;
+					},
+					files: function () {
+						return files;
 					}
 				}
 			});
@@ -32,13 +35,31 @@
 	}
 
 	/** @ngInject */
-	function EditSpotModalController(_, $uibModalInstance, $translate, Spot, spot, uiDataSourcesService) {
+	function EditSpotModalController(_, $uibModalInstance, $translate, Spot, spot, files, uiDataSourcesService, FilesList) {
 		var vm = this;
+
+		//vm.files = files || [];
+
+		//vm.addFiles= function($files) {
+		//	if ($files && $files.length) {
+		//		for (var i = 0; i < $files.length; i++) {
+		//			vm.files.push($files[i]);
+		//		}
+		//	}
+		//}
+
 
 		if (spot) {
 			vm.editMode = true;
 
 			vm.spot = angular.copy(spot);
+
+			if (spot.files) {
+				vm.filesList = new FilesList(angular.copy(spot.files));
+			} else {
+				vm.filesList = new FilesList([]);
+			}
+
 		} else {
 			vm.editMode = false;
 
@@ -65,6 +86,8 @@
 				vstType: "WH",
 				vst: null
 			});
+
+			vm.filesList = new FilesList(files || []);
 		}
 
 		vm.typeDataSource = [
@@ -120,12 +143,16 @@
 				vm.spot.format = getSelected(vm.formats);
 				vm.spot.region = getSelected(vm.regions);
 
+				vm.spot.files = vm.filesList.getFiles();
+
 				$uibModalInstance.close(vm.spot);
 			}
 		};
 
 		vm.cancel = function () {
 			$uibModalInstance.dismiss('cancel');
+
+			vm.filesList = null;
 		};
 
 

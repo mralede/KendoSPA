@@ -69,6 +69,8 @@
 
 				this.set("vstType", data.vstType || "");
 				this.set("vst", data.vst);
+
+				this.files = data.files || [];
 			},
 
 			getData: function () {
@@ -95,7 +97,9 @@
 					region: this.get("region"),
 
 					vstType: this.get("vstType"),
-					vst: this.get("vst")
+					vst: this.get("vst"),
+
+					files: this.files
 				}
 			},
 

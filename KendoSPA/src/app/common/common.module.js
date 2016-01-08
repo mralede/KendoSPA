@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('kendoSpa.common', ['pascalprecht.translate']);
+    .module('kendoSpa.common', ['pascalprecht.translate', 'ngFileUpload']);
 
 })();

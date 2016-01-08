@@ -75,6 +75,7 @@
     <Content Include="src\app\common\common.module.js" />
     <Content Include="src\app\common\common.uiDataSources.service.js" />
     <Content Include="src\app\common\directives\full-height.directive.js" />
+    <Content Include="src\app\common\model\FilesList.js" />
     <Content Include="src\app\common\model\Spot.js" />
     <Content Include="src\app\common\services\spotsDataService.js" />
     <Content Include="src\app\components\localization\localizationService.js" />
