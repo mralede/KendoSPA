@@ -46,14 +46,14 @@
 									<input name="nameThirdOption" required
 										   type="text"
 										   ng-model="editSpot.spot.nameThirdOption"
-										   class="form-control input-sm" placeholder="">
+										   class="form-control k-textbox input-sm" placeholder="">
 								</div>
 
 								<div class="col-sm-5">
 									<input name="name" required
 										   type="text"
 										   ng-model="editSpot.spot.name"
-										   class="form-control input-sm" placeholder="">
+										   class="form-control k-textbox input-sm" placeholder="">
 								</div>
 							</div>
 						</div>
@@ -84,7 +84,7 @@
 							<div>
 								<input type="text"
 									   ng-model="editSpot.spot.campaign"
-									   class="form-control input-sm" placeholder="">
+									   class="form-control k-textbox input-sm" placeholder="">
 							</div>
 						</div>
 
@@ -109,7 +109,7 @@
 							<div>
 								<input type="text"
 									   ng-model="editSpot.spot.theme"
-									   class="form-control input-sm" placeholder="">
+									   class="form-control k-textbox input-sm" placeholder="">
 							</div>
 						</div>
 					</div>
@@ -122,7 +122,7 @@
 								<textarea type="text"
 										  ng-model="editSpot.spot.text"
 										  rows="3"
-										  class="form-control input-sm" placeholder=""></textarea>
+										  class="form-control k-textbox input-sm" placeholder=""></textarea>
 							</div>
 						</div>
 					</div>
@@ -133,9 +133,10 @@
 
 							<div>
 								<input name="startDate" required
-									   kendo-date-picker
-									   k-ng-model="editSpot.spot.startDate"
-									   style="width: 100%;" />
+									kendo-date-picker
+									k-ng-model="editSpot.spot.startDate"
+									k-format="'dd.MM.yyyy'"
+									style="width: 100%;" />
 								<span class="k-invalid-msg" data-for="startDate"></span>
 							</div>
 						</div>
@@ -145,9 +146,10 @@
 
 							<div>
 								<input name="endDate" required
-									   kendo-date-picker
-									   k-ng-model="editSpot.spot.endDate"
-									   style="width: 100%;" />
+									kendo-date-picker
+									k-ng-model="editSpot.spot.endDate"
+									k-format="'dd.MM.yyyy'"
+									style="width: 100%;" />
 								<span class="k-invalid-msg" data-for="endDate"></span>
 							</div>
 						</div>
@@ -209,7 +211,7 @@
 									<textarea type="text"
 											  ng-model="editSpot.spot.vst"
 											  rows="4"
-											  class="form-control input-sm" placeholder=""></textarea>
+											  class="form-control k-textbox input-sm" placeholder=""></textarea>
 								</div>
 							</div>
 						</div>

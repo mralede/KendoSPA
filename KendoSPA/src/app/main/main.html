@@ -132,16 +132,18 @@
 							<div class="form-group">
 								<label>{{"Start datum" | translate}}</label>
 								<input kendo-date-picker
-									   k-rebind="main.locale"
-									   k-ng-model="main.spotsFilter.dateRange.start"
-									   style="width: 100%;" />
+									k-rebind="main.locale"
+									k-ng-model="main.spotsFilter.dateRange.start"
+									k-format="'dd.MM.yyyy'"
+									style="width: 100%;" />
 							</div>
 							<div class="form-group">
 								<label>{{"End datum" | translate}}</label>
 								<input kendo-date-picker
-									   k-rebind="main.locale"
-									   k-ng-model="main.spotsFilter.dateRange.end"
-									   style="width: 100%;" />
+									k-rebind="main.locale"
+									k-ng-model="main.spotsFilter.dateRange.end"
+									k-format="'dd.MM.yyyy'"
+									style="width: 100%;" />
 							</div>
 						</div>
 					</div>
@@ -154,14 +156,14 @@
 						<div class="row">
 							<div class="form-group  form-group-sm col-xs-12">
 								<label>{{"Spot name" | translate}}</label>
-								<input type="text" ng-model="main.spotsFilter.gridFilter.spotName" class="form-control" placeholder="Search text">
+								<input type="text" ng-model="main.spotsFilter.gridFilter.spotName" class="form-control k-textbox" placeholder="Search text">
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="form-group  form-group-sm col-xs-5">
 								<label>{{"Kampagne" | translate}}</label>
-								<input type="text" ng-model="main.spotsFilter.gridFilter.campaign" class="form-control" placeholder="Search text">
+								<input type="text" ng-model="main.spotsFilter.gridFilter.campaign" class="form-control k-textbox" placeholder="Search text">
 							</div>
 
 							<div class="form-group  form-group-sm col-xs-7">
@@ -239,7 +241,7 @@
 
 							<div class="form-group  form-group-sm col-xs-2">
 								<label>VST</label>
-								<input type="text" ng-model="main.spotsFilter.gridFilter.vst" class="form-control" placeholder="">
+								<input type="text" ng-model="main.spotsFilter.gridFilter.vst" class="form-control k-textbox" placeholder="">
 							</div>
 						</div>
 

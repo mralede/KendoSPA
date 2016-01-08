@@ -78,8 +78,8 @@
 				model: {
 					id: "id",
 					fields: {
-						startDate: { type: "date", format: "{0:dd/MM/yyyy}" },
-						endDate: { type: "date", format: "{0:dd/MM/yyyy}" }
+						startDate: { type: "date", format: "{0:dd.MM.yyyy}" },
+						endDate: { type: "date", format: "{0:dd.MM.yyyy}" }
 					}
 				}
 			},
@@ -155,13 +155,13 @@
 					field: "startDate",
 					title: translations["Start Datum"],
 					type: "date",
-					format: "{0:dd/MM/yyyy}",
+					format: "{0:dd.MM.yyyy}",
 					width: "60px"
 				}, {
 					field: "endDate",
 					title: translations["End Datum"],
 					type: "date",
-					format: "{0:dd/MM/yyyy}",
+					format: "{0:dd.MM.yyyy}",
 					width: "60px"
 				}, {
 					field: "vstType",
